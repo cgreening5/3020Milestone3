@@ -1,0 +1,427 @@
+#nav_port {
+	position: fixed;
+	top:75%;
+	background-color: Linen;
+	left:0%;
+	width:100%;
+	height:25%;
+	border:1px solid #000;
+}
+
+#menu_port {
+	position: fixed;
+	top:0%;
+	background-color: Linen;
+	left:0%;
+	width:100%;
+	height:7%;
+	border:1px solid #000;
+}
+
+button {
+	background-color:DarkSlateGray;
+	border-color:Black;
+	color:white;
+	font-family: Impact, Charcoal, sans-serif;
+}
+
+
+
+#screen {
+	position:fixed;
+	left: 0%;
+	top: 0%;
+	height: 100%;
+	width:100%;
+	border:1px solid #000;
+}
+
+#welcomeOne{
+	position: fixed;
+	top:30%;
+	left: 40%;
+	text-align: left;
+	font-size: 35px;
+}
+
+#welcomeTwo{
+	position: fixed;
+	top:40%;
+	left: 10%;
+	text-align: left;
+	font-size: 30px;
+}
+
+#menu_buttons button {
+	top:1%;
+	position: fixed;
+	height:5%;
+	width: 20%;
+}
+	
+#appetizer_button {
+	left:4%;
+	font-size: 20px;	
+}
+
+#drinks_button { 
+	left:28%;
+	font-size: 20px;
+}
+
+#entree_button { 
+	left:52%;
+	font-size: 20px;
+}
+
+#dessert_button { 
+	left:76%;
+	font-size: 20px;
+}
+
+
+#navigation button{
+	position: fixed;
+	height:9%;
+	width: 33%;
+}
+
+#menu {
+	top:77%;
+	left:4%;
+	font-size: 24px;
+}
+
+#help {
+	top:89%;
+	left:4%;
+	font-size: 20px;
+}
+
+#order {
+	top:77%;
+	left:41%;
+	font-size: 20px;
+}
+
+#bills {
+	top:89%;
+	left:41%;
+	font-size: 24px;
+}
+
+.appetizers {
+	position: relative;
+	left:4%;
+	border:1px solid #000;
+	height:150px;
+	width:92%;
+}
+
+.drinks {
+	position: relative;
+	left:4%;
+	border:1px solid #000;
+	height:150px;
+	width:92%;
+}
+
+.entree {
+	position: relative;
+	left:4%;
+	border:1px solid #000;
+	height:150px;
+	width:92%;
+}
+
+.dessert {
+	position: relative;
+	left:4%;
+	border:1px solid #000;
+	height:150px;
+	width:92%;
+}
+
+.food_img {
+	position: absolute;
+	top: 12.5px;
+	left: 3%;
+	height:125px;
+	width:175px;
+	border:1px solid #000;
+}
+
+h3 {
+	margin-top: 0;
+	position: absolute;	
+	top:10px;
+	left:230px;
+	text-align: left;
+}
+
+
+.food_desc {
+	position: absolute;	
+	top:40px;
+	left:230px;
+	text-align: left;
+}
+
+.food_price {
+	margin-top: 0;
+	position: absolute;	
+	top:10px;
+	right:2%;
+	text-align: right;
+	font-size: 20px;
+}
+
+.stars {
+	height:25px;
+	width:110px;
+	position:absolute;
+	left:225px;
+	top:30px;
+}
+
+#back {
+	position: absolute;
+	top: 3%;
+	left: 3%;
+	height: 10%;
+	width: 30%;
+	font-size: 25px;
+}
+
+#add_order {
+	position: absolute;
+	top: 60%;
+	left: 67%;
+	height: 10%;
+	width: 30%;
+	font-size: 28px;
+}
+
+.food_img_e {
+	position: absolute;
+	top: 16%;
+	left: 3%;
+	height:150px;
+	width:210px;
+	border:1px solid #000;
+}
+
+h2 {
+	margin-top: 0;
+	position: absolute;	
+	top:16%;
+	left:270px;
+	text-align: left;
+}
+
+.food_desc_e {
+	position: absolute;	
+	top:22%;
+	left:270px;
+	text-align: left;
+	font-size: 18px;
+}
+
+.food_price_e {
+	margin-top: 0;
+	position: absolute;	
+	top:16%;
+	right:3%;
+	text-align: right;
+	font-size: 24px;
+}
+
+.food_contain {
+	position: absolute;
+	top: 260px;
+	left: 3%;
+	font-size: 20px;
+}
+
+.stars_e {
+	height:40px;
+	width:175px;
+	position:absolute;
+	top:19%;
+	left:265px;
+}
+
+.ordered {
+	right:2%;
+	top:100px;
+	position: absolute;
+	font-style: italic;
+	font-size: 22px;
+}
+
+
+.order_window {
+	position: absolute;
+	border:1px solid #000;
+	height:300px;
+	width:40%;
+	background-color: Ivory;
+}
+
+.order_window h5{
+	position: absolute;
+	margin-top: 0;
+	top: 5px;
+	left: 80px;
+}
+
+#order_one {
+	top: 15px;
+	left: 5%;
+}
+
+#order_two {
+	top: 15px;
+	right: 5%;
+}
+
+#order_three {
+	top: 330px;
+	left: 5%;
+}
+
+.new_order_button {
+	position: absolute;
+	font-size:18px;
+	height:75px;
+	width: 75px;
+	font-size:60px;
+}
+
+
+#new_order_two {
+	top:90px;
+	right: 20%;
+}
+
+#new_order_three {
+	top:385px;
+	left: 20%;
+}
+
+#submit_order {
+	position:absolute;
+	height:10%;
+	width:30%;
+	font-size:22px;
+	top:60%;
+	right:5%;
+}
+
+.confirm_window {
+	background-color: Linen;
+	border:1px solid #000;
+	position:fixed;
+	height:175px;
+	width:80%;
+	left:10%;
+	top:25%;
+}
+
+.confirm_button {
+	height:50px;
+	width: 35%;
+	font-size:22px;
+}
+
+#order_c_no {
+	position: absolute;
+	left: 10%;
+	top: 110px;
+}
+
+#order_c_yes {
+	position: absolute;
+	right: 10%;
+	top: 110px;
+}
+
+#order_confirm p {
+	position: absolute;
+	left:30%;
+	margin-top:0px;
+	top:30px;
+	font-size:28px;
+}
+
+#submitted_p {
+	position:absolute;
+	left:20%;
+	margin-top:0px;
+	top:30%;
+	font-size:30px;
+}
+
+#wait_order_p{
+	position:absolute;
+	left:20%;
+	margin-top:0px;
+	top:35%;
+	font-size:30px;
+	
+}
+
+#fried_calamari{
+	top:50px;
+}
+
+#crisper{
+	top:60px;
+}
+
+#bacon_shrimp{
+	top:70px;
+}
+
+#invis_drink{
+	top:50px;
+}
+
+#wine{
+	top:60px;
+}
+
+#steak{
+	top:50px;
+}
+
+#fish_chips{
+	top:60px;
+}
+
+#lemon_pie{
+	top:50px;
+}
+
+#shortcake{
+	top:60px;
+}
+
+/* Order screen items */
+
+.order_list
+{
+    list-style-type: none;
+}
+
+.order_list.h5{
+    text-align: center;
+}
+
+.order_list{
+    position: relative;
+    top: 20px;
+}
+
+
+
