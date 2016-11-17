@@ -42,7 +42,9 @@ $(document).ready(function () {
     $("#expand_screen").hide();
     $("#order_submitted").hide();
 
-
+    /*
+     * Navigation Button Functions
+     */
 
     //highlights menu button clicked, hides previous navigation screen, shows the menu screen
     $("#menu").click(function () {
@@ -51,7 +53,6 @@ $(document).ready(function () {
             prevPage = currPage;
             currPage = $("#menu_screen").clickShow(currPage);
         }
-        ;
     });
 
     //highlights orders button clicked, hides previous navigation screen, shows the orders screen, needs at least one item ordered
@@ -63,7 +64,6 @@ $(document).ready(function () {
             prevPage = currPage;
             currPage = $("#orders_screen").clickShow(currPage);
         }
-        ;
     });
 
     //highlights bills button clicked, hides previous navigation screen, shows the bills screen, needs to submit order first
@@ -74,11 +74,7 @@ $(document).ready(function () {
             prevPage = currPage;
             currPage = $("#bills_screen").clickShow(currPage);
         }
-        ;
     });
-
-
-
 
     //highlights most recently clicked menu buttons, shows current menu, hides previous menu
     $("#appetizer_button").click(function () {
@@ -97,27 +93,28 @@ $(document).ready(function () {
         lastMenu = $("#dessert_button").clickHilite(lastMenu);
         lastMenuScreen = $(".dessert").clickShow(lastMenuScreen);
     });
-
-
-
-
+    
     //expands menu item when clicked
     $("#fried_calamari").click(function () {
         lastExpandScreen = $("#fried_calamari_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Fried Calamari";
+        currItem = {name:"Fried Calamari", price:14};
         itemOrderNote = "#calamari_ordered";
         ;
     });
+    
+    /*
+     * Menu Item Buttons
+     */
 
     $("#crisper").click(function () {
         lastExpandScreen = $("#crisper_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Chicken Crispers";
+        currItem = {name:"Chicken Crispers", price:16};
         itemOrderNote = "#crisper_ordered";
         ;
     });
@@ -127,7 +124,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Bacon Shrimp";
+        currItem = {name:"Bacon Shrimp", price:14};
         itemOrderNote = "#bacon_shrimp_ordered";
         ;
     });
@@ -137,7 +134,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Invisible Drink";
+        currItem = {name:"Invisible Drink", price:19};
         itemOrderNote = "#invis_drink_ordered";
         ;
     });
@@ -147,7 +144,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Red Wine";
+        currItem = {name:"Red Wine", price:18};
         itemOrderNote = "#wine_ordered";
         ;
     });
@@ -157,7 +154,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Rib-eye Steak";
+        currItem = {name:"Rib-eye Steak", price:25};
         itemOrderNote = "#steak_ordered";
         ;
     });
@@ -167,7 +164,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Fish and Chips";
+        currItem = {name:"Fish and Chips", price:22};
         itemOrderNote = "#fish_chips_ordered";
         ;
     });
@@ -177,7 +174,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Lemon Pie";
+        currItem = {name:"Lemon Pie", price:11};
         itemOrderNote = "#lemon_pie_ordered";
         ;
     });
@@ -187,13 +184,14 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = "Shortcake";
+        currItem = {name:"Shortcake", price:12};
         itemOrderNote = "#shortcake_ordered";
         ;
     });
 
 
     //back button for expanded food items, brings back to current menu shown
+    
     $("#back").click(function () {
         $("#expand_screen").hide();
         $(prevPage).show();
@@ -201,8 +199,8 @@ $(document).ready(function () {
         ;
     });
 
-
     //adds items to orders, current max is 8 different per order, if exceeded makes a new order automatically
+    
     $("#add_order").click(function () {
         var currOrder = null;
         var currList = null;
@@ -219,23 +217,33 @@ $(document).ready(function () {
             currList = $("#order1_list");
         }
 
-        var searchNode = currOrder.search(currItem);
+        var searchNode = currOrder.search(currItem.name);
         if (searchNode == -1) {
-            currOrder.add(currItem);
+            currOrder.add(currItem.name);
             itemCount++;
-            currList.append("<li id=\"" + currItem.replace(/ /g, "_") + "\">" + currItem + "</li>");
+            currList.append(getOrderItemHTML(currItem, 1));
         } 
         else {
             currOrder.increment(searchNode);
-            $("#" + currItem.replace(/ /g, "_")).text(currItem + " ... x" + searchNode.count);
+            $("#" + currItem.name.replace(/ /g, "_")).html(getOrderItemHTML(currItem, searchNode.count));
         }
 
         $(itemOrderNote).show();
         $(currPage).hide();
         $(prevPage).show();
         currPage = prevPage;
-        ;
     });
+
+    function getOrderItemHTML(item, quantity){
+        var resultHTML = "<div class=\"order_item\" ";
+        resultHTML += "id =\"" + item.name.replace(/ /g, "_") + "\">";
+        resultHTML += "<input type=\"image\" class=\"delete_order_item\" src=\"delete_button.svg\">";
+        resultHTML += item.name + "................" + item.price;
+        resultHTML += "</br>";
+        resultHTML += "&nbsp-x" + quantity;
+        resultHTML += "</div>";
+        return resultHTML;
+    }
 
     //make new orders as the buttons are clicked
     $("#new_order_two").click(function () {
@@ -256,7 +264,6 @@ $(document).ready(function () {
         }
         ;
     });
-
 
     //brings up confirmation screen that submits order, submitting order resets orders
     $("#submit_order").click(function () {

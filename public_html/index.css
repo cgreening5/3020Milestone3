@@ -264,7 +264,7 @@ h2 {
 	position: absolute;
 	border:1px solid #000;
 	height:300px;
-	width:40%;
+	width:300px;
 	background-color: Ivory;
 }
 
@@ -423,5 +423,16 @@ h2 {
     top: 20px;
 }
 
+.order_item{
+    margin-top: 5px;
+    font: 12px helvetica;
+}
 
+.delete_order_item{
+    height: 25px;
+    width: 30px;
+    display: block;
+    float: right;
+    margin-right: 20px;
+}
 
