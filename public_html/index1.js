@@ -221,11 +221,11 @@ $(document).ready(function () {
         if (searchNode == -1) {
             currOrder.add(currItem.name);
             itemCount++;
-            currList.append(getOrderItemHTML(currItem, 1));
+            currList.append(getOrderItem(currItem, 1));
         } 
         else {
             currOrder.increment(searchNode);
-            $("#" + currItem.name.replace(/ /g, "_")).html(getOrderItemHTML(currItem, searchNode.count));
+            $("#" + currItem.name.replace(/ /g, "_")).html(getOrderItem(currItem, searchNode.count));
         }
 
         $(itemOrderNote).show();
@@ -234,16 +234,32 @@ $(document).ready(function () {
         currPage = prevPage;
     });
 
-    function getOrderItemHTML(item, quantity){
-        var resultHTML = "<div class=\"order_item\" ";
-        resultHTML += "id =\"" + item.name.replace(/ /g, "_") + "\">";
-        resultHTML += "<input type=\"image\" class=\"delete_order_item\" src=\"delete_button.svg\">";
-        resultHTML += item.name + "................" + item.price;
-        resultHTML += "</br>";
-        resultHTML += "&nbsp-x" + quantity;
-        resultHTML += "</div>";
-        return resultHTML;
+    function getOrderItem(item, quantity){
+        
+        var orderItem = $("<div></div>");
+        var deleteButton = $("<input></input>");
+        deleteButton.attr("type", "image");
+        deleteButton.attr("class", "delete_order_item");
+        deleteButton.attr("src", "delete_button.svg");
+        
+        orderItem.append(deleteButton);
+        orderItem.attr("id", item.name.replace(/ /g, "_"));
+        orderItem.attr("class", "order_item");
+        orderItem.append(item.name + "................$" + item.price);
+        orderItem.append("</br>");
+        orderItem.append("-x" + quantity);
+        
+        orderItem.data("item", item);
+        
+        return orderItem;
     }
+    
+    $("#orders_screen").on("click", ".delete_order_item", function() { 
+        var div = $(this).closest("div");
+        var itemName = div.data("item").name;
+        firstOrder.remove(itemName);
+        div.fadeOut(300);
+    });
 
     //make new orders as the buttons are clicked
     $("#new_order_two").click(function () {

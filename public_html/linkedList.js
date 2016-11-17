@@ -73,12 +73,16 @@ LinkedList.prototype.remove = function (data) {
         if (data == currentNode.data) {
             found = true;
         }
-        prevNode = currentNode;
-        currentNode = currentNode.next;
+        
+        else
+        {
+            prevNode = currentNode;
+            currentNode = currentNode.next;
+        }
     }
 
     if (found) {
-        if (prevNode = null) {
+        if (prevNode == null) {
             this.head = this.head.next;
         } else {
             prevNode.next = currentNode.next;
@@ -87,6 +91,7 @@ LinkedList.prototype.remove = function (data) {
         this.size--;
         return currentNode;
     }
+    
     return -1;
 };
 

@@ -426,6 +426,8 @@ h2 {
 .order_item{
     margin-top: 5px;
     font: 12px helvetica;
+    text-align: right;
+    margin-right: 
 }
 
 .delete_order_item{
@@ -434,5 +436,5 @@ h2 {
     display: block;
     float: right;
     margin-right: 20px;
+    margin-left: 30px;
 }
-
