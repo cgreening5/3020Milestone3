@@ -1,5 +1,4 @@
-﻿
-<html>
+﻿<html>
     <head>
         <title>HCI Project Milestone 3</title>
         <meta charset="UTF-8">
@@ -15,267 +14,286 @@
         <div id="screen">
         </div>
 
-        <div id="welcome">
-            <p id="welcomeOne">Welcome!</p>
-            <p id="welcomeTwo">Please click on Menu to start ordering.</p>
+        
+
+        <div id="menu_port">
+                <div id="menu_buttons">
+                    <button id="appetizer_button">Appetizers</button>
+                    <button id="drinks_button">Drinks</button>
+                    <button id="entree_button">Entrée</button>
+                    <button id="dessert_button">Desserts</button>
+                </div>
         </div>
 
-        <div id="menu_screen">
-
-
-            <div id="fried_calamari" class="appetizers" >
-                <img class="food_img" src="fried-calamari.jpg">
-                <img class="stars" src="4stars.png">
-                <h3>Fried Calamari</h3>
-                <p class="food_desc">Fried Calamari</p>
-                <p class="food_price">$14</p>
-                <p id= "calamari_ordered" class="ordered">Ordered</p>
+        <div id= "nav_port">
+            <div id= "navigation">          
+                <button id="menu">Menu</button>
+                <button id="order">View/Submit Order</button>
+                <button id="help">Request Employee</button>
+                <button id="bills" >View Bills</button>
+                <img id="mag_glass" src="magnifying-glass.png" />
             </div>
-
-            <div id="crisper" class="appetizers" >
-                <img class="food_img" src="chicken-crisper.jpg">
-                <img class="stars" src="3stars.png">
-                <h3>Chicken Crispers</h3>
-                <p class="food_desc">Chicken Crispers</p>
-                <p class="food_price">$16</p>
-                <p id= "crisper_ordered" class="ordered">Ordered</p>
-            </div>
-
-            <div id="bacon_shrimp" class="appetizers" >
-                <img class="food_img" src="bacon-shrimp.jpg">
-                <img class="stars" src="3stars.png">
-                <h3>Bacon Shrimp</h3>
-                <p class="food_desc">Bacon Wrapped Shrimp</p>
-                <p class="food_price">$14</p>
-                <p id= "bacon_shrimp_ordered" class="ordered">Ordered</p>
-            </div>
-
-
-
-            <div id="invis_drink" class="drinks" >
-                <img class="food_img" src="empty_glass.jpg">
-                <img class="stars" src="5stars.png">
-                <h3>Invisible Drink</h3>
-                <p class="food_desc">Completely invisible drink.</p>
-                <p class="food_price">$19</p>
-                <p id= "invis_drink_ordered" class="ordered">Ordered</p>
-            </div>
-
-            <div id="wine" class="drinks" >
-                <img class="food_img" src="Red_wine.jpg">
-                <img class="stars" src="3stars.png">
-                <h3>Red Wine</h3>
-                <p class="food_desc">Fine red wine.</p>
-                <p class="food_price">$18</p>
-                <p id= "wine_ordered" class="ordered">Ordered</p>
-            </div>
-
-
-
-            <div id="steak" class="entree" >
-                <img class="food_img" src="rib-steak.jpg">
-                <img class="stars" src="4stars.png">
-                <h3>Rib-eye Steak</h3>
-                <p class="food_desc">Rib-eye Steak</p>
-                <p class="food_price">$25</p>
-                <p id= "steak_ordered" class="ordered">Ordered</p>
-            </div>
-
-            <div id="fish_chips" class="entree" >
-                <img class="food_img" src="fish-chips.jpg">
-                <img class="stars" src="4stars.png">
-                <h3>Fish and Chips</h3>
-                <p class="food_desc">Chips and Fish</p>
-                <p class="food_price">$22</p>
-                <p id= "fish_chips_ordered" class="ordered">Ordered</p>
-            </div>
-
-
-
-            <div id="lemon_pie" class="dessert" >
-                <img class="food_img" src="lemon-pie.jpg">
-                <img class="stars" src="5stars.png">
-                <h3>Lemon Pie</h3>
-                <p class="food_desc">Lemon Meringue Pie</p>
-                <p class="food_price">$11</p>
-                <p id= "lemon_pie_ordered" class="ordered">Ordered</p>
-            </div>
-
-            <div id="shortcake" class="dessert" >
-                <img class="food_img" src="shortcake.jpg">
-                <img class="stars" src="3stars.png">
-                <h3>Shortcake</h3>
-                <p class="food_desc">Strawberry Shortcake</p>
-                <p class="food_price">$12</p>
-                <p id= "shortcake_ordered" class="ordered">Ordered</p>
-            </div>
-
-            <div id="menu_port"><p></p></div>
-
-            <div id="menu_buttons">
-                <button id="appetizer_button">Appetizers</button>
-                <button id="drinks_button">Drinks</button>
-                <button id="entree_button">Entrée</button>
-                <button id="dessert_button">Desserts</button>
-            </div>
-        </div> 
-
-        <div id= "orders_screen">
-
-            <div id= "order_one" class = "order_window">
-                <h5>Order 1</h5>
-                <ol class= "order_list" id="order1_list"></ol>
-            </div>
-
-            <div id= "order_two" class = "order_window">
-                <h5>Order 2</h5>
-                <ol class= "order_list" id="order2_list"></ol>
-            </div>
-
-            <div id= "order_three" class = "order_window">
-                <h5>Order 3</h5>
-                <ol class= "order_list" id="order3_list"></ol>
-            </div>
-
-            <div id= "order_four" class = "order_window">
-                <h5>Order 4</h5>
-                <ol class= "order_list" id="order4_list"></ol>
-            </div>
-
-            <button id= "new_order_two" class = "new_order_button">+</button>
-
-            <button id= "new_order_three" class = "new_order_button">+</button>
-
-            <button id= "new_order_four" class = "new_order_button">+</button>
-
-            <div id= "order_confirm" class= "confirm_window"> 
-                <p>Submit your order?</p>
-                <button id = "order_c_yes" class = "confirm_button">Confirm</button>
-                <button id = "order_c_no" class = "confirm_button">Cancel</button>
-            </div>
-
-            <button id= "submit_order">Submit Order</button>
-
-
-
+            
         </div>
 
-        <div id="order_submitted">
-            <p id="submitted_p">Your order has been submitted</p>
-            <p id="wait_order_p">Please wait for the server</p>
-        </div>
+        <!-- center container -->
+        <div id="center_container">
 
-        <div id= "bills_screen">
-        </div>
+            <div id="welcome">
+                <p id="welcomeOne">Welcome!</p>
+                <button id="welcomeBegin"><p id="beginP">Begin</p></button>
+                <button id="welcomeHelp"><p id="helpP">Request Assistance</p></button>
+            </div>
 
-        <div id="expand_screen">
+            <!-- screen for the menu, within the center container -->
+            <div id="menu_screen">
 
-            <div id="expanded_window">
-
-                <div id="fried_calamari_e">
-                    <img class="food_img_e" src="fried-calamari.jpg">
-                    <img class="stars_e" src="4stars.png">
-                    <h2>Fried Calamari</h2>
-                    <p class="food_desc_e">Fried Calamari description</p>
-                    <p class="food_contain">Contains: squid</p>
-                    <p class="food_price_e">$14</p>
+                <div id="fried_calamari" class="appetizers" >
+                    <img class="food_img" src="fried-calamari.jpg">
+                    <img class="stars" src="4stars.png">
+                    <h3>Fried Calamari</h3>
+                    <p class="food_desc">Fried Calamari</p>
+                    <p class="food_price">$14</p>
+                    <p id= "calamari_ordered" class="ordered">Ordered</p>
                 </div>
 
-                <div id="crisper_e">
-                    <img class="food_img_e" src="chicken-crisper.jpg">
-                    <img class="stars_e" src="3stars.png">
-                    <h2>Chicken Crispers</h2>
-                    <p class="food_desc_e">Chicken Crispers</p>
-                    <p class="food_contain">Contains: chicken</p>
-                    <p class="food_price_e">$16</p>
+                <div id="crisper" class="appetizers" >
+                    <img class="food_img" src="chicken-crisper.jpg">
+                    <img class="stars" src="3stars.png">
+                    <h3>Chicken Crispers</h3>
+                    <p class="food_desc">Chicken Crispers</p>
+                    <p class="food_price">$16</p>
+                    <p id= "crisper_ordered" class="ordered">Ordered</p>
                 </div>
 
-                <div id="bacon_shrimp_e">
-                    <img class="food_img_e" src="bacon-shrimp.jpg">
-                    <img class="stars_e" src="3stars.png">
-                    <h2>Bacon Shrimp</h2>
-                    <p class="food_desc_e">Bacon Shrimp</p>
-                    <p class="food_contain">Contains: shrimp, bacon</p>
-                    <p class="food_price_e">$14</p>
-                </div>
-
-
-
-                <div id="invis_drink_e">
-                    <img class="food_img_e" src="empty_glass.jpg">
-                    <img class="stars_e" src="5stars.png">
-                    <h2>Invisible Drink</h2>
-                    <p class="food_desc_e">Completely invisible drink.</p>
-                    <p class="food_contain">Contains: ?</p>
-                    <p class="food_price_e">$19</p>
-                </div>
-
-                <div id="wine_e">
-                    <img class="food_img_e" src="Red_wine.jpg">
-                    <img class="stars_e" src="3stars.png">
-                    <h2>Red Wine</h2>
-                    <p class="food_desc_e">Fine red wine.</p>
-                    <p class="food_contain">Contains: red wine</p>
-                    <p class="food_price_e">$18</p>
+                <div id="bacon_shrimp" class="appetizers" >
+                    <img class="food_img" src="bacon-shrimp.jpg">
+                    <img class="stars" src="3stars.png">
+                    <h3>Bacon Shrimp</h3>
+                    <p class="food_desc">Bacon Wrapped Shrimp</p>
+                    <p class="food_price">$14</p>
+                    <p id= "bacon_shrimp_ordered" class="ordered">Ordered</p>
                 </div>
 
 
 
-                <div id="steak_e">
-                    <img class="food_img_e" src="rib-steak.jpg">
-                    <img class="stars_e" src="4stars.png">
-                    <h2>Rib-eye Steak</h2>
-                    <p class="food_desc_e">Rib-eye Steak</p>
-                    <p class="food_contain">Contains: steak</p>
-                    <p class="food_price_e">$25</p>
+                <div id="invis_drink" class="drinks" >
+                    <img class="food_img" src="empty_glass.jpg">
+                    <img class="stars" src="5stars.png">
+                    <h3>Invisible Drink</h3>
+                    <p class="food_desc">Completely invisible drink.</p>
+                    <p class="food_price">$19</p>
+                    <p id= "invis_drink_ordered" class="ordered">Ordered</p>
                 </div>
 
-                <div id="fish_chips_e">
-                    <img class="food_img_e" src="fish-chips.jpg">
-                    <img class="stars_e" src="4stars.png">
-                    <h2>Fish and Chips</h2>
-                    <p class="food_desc_e">Chips and Fish</p>
-                    <p class="food_contain">Contains: chips, fish</p>
-                    <p class="food_price_e">$22</p>
+                <div id="wine" class="drinks" >
+                    <img class="food_img" src="Red_wine.jpg">
+                    <img class="stars" src="3stars.png">
+                    <h3>Red Wine</h3>
+                    <p class="food_desc">Fine red wine.</p>
+                    <p class="food_price">$18</p>
+                    <p id= "wine_ordered" class="ordered">Ordered</p>
                 </div>
 
 
 
-                <div id="lemon_pie_e">
-                    <img class="food_img_e" src="lemon-pie.jpg">
-                    <img class="stars_e" src="5stars.png">
-                    <h2>Lemon Pie</h2>
-                    <p class="food_desc_e">Lemon Meringue Pie</p>
-                    <p class="food_contain">Contains: lemon, bread</p>
-                    <p class="food_price_e">$11</p>
+                <div id="steak" class="entree" >
+                    <img class="food_img" src="rib-steak.jpg">
+                    <img class="stars" src="4stars.png">
+                    <h3>Rib-eye Steak</h3>
+                    <p class="food_desc">Rib-eye Steak</p>
+                    <p class="food_price">$25</p>
+                    <p id= "steak_ordered" class="ordered">Ordered</p>
                 </div>
 
-                <div id="shortcake_e">
-                    <img class="food_img_e" src="shortcake.jpg">
-                    <img class="stars_e" src="3stars.png">
-                    <h2>Shortcake</h2>
-                    <p class="food_desc_e">Strawberry Shortcake</p>
-                    <p class="food_contain">Contains: strawberry, short, cake</p>
-                    <p class="food_price_e">$12</p>
+                <div id="fish_chips" class="entree" >
+                    <img class="food_img" src="fish-chips.jpg">
+                    <img class="stars" src="4stars.png">
+                    <h3>Fish and Chips</h3>
+                    <p class="food_desc">Chips and Fish</p>
+                    <p class="food_price">$22</p>
+                    <p id= "fish_chips_ordered" class="ordered">Ordered</p>
+                </div>
+
+
+
+                <div id="lemon_pie" class="dessert" >
+                    <img class="food_img" src="lemon-pie.jpg">
+                    <img class="stars" src="5stars.png">
+                    <h3>Lemon Pie</h3>
+                    <p class="food_desc">Lemon Meringue Pie</p>
+                    <p class="food_price">$11</p>
+                    <p id= "lemon_pie_ordered" class="ordered">Ordered</p>
+                </div>
+
+                <div id="shortcake" class="dessert" >
+                    <img class="food_img" src="shortcake.jpg">
+                    <img class="stars" src="3stars.png">
+                    <h3>Shortcake</h3>
+                    <p class="food_desc">Strawberry Shortcake</p>
+                    <p class="food_price">$12</p>
+                    <p id= "shortcake_ordered" class="ordered">Ordered</p>
+                </div>
+
+            </div> 
+            <!-- screen for the menu, within the center container -->
+
+            <!-- screen for orders, within center container -->
+            <div id= "orders_screen">
+
+                <div id= "order_one" class = "order_window">
+                    <h5>Order 1</h5>
+                    <ol class= "order_list" id="order1_list"></ol>
+                </div>
+
+                <div id= "order_two" class = "order_window">
+                    <h5>Order 2</h5>
+                    <ol class= "order_list" id="order2_list"></ol>
+                </div>
+
+                <div id= "order_three" class = "order_window">
+                    <h5>Order 3</h5>
+                    <ol class= "order_list" id="order3_list"></ol>
+                </div>
+
+                <div id= "order_four" class = "order_window">
+                    <h5>Order 4</h5>
+                    <ol class= "order_list" id="order4_list"></ol>
+                </div>
+
+                <button id= "new_order_two" class = "new_order_button">+</button>
+
+                <button id= "new_order_three" class = "new_order_button">+</button>
+
+                <button id= "new_order_four" class = "new_order_button">+</button>
+
+                <div id= "order_confirm" class= "confirm_window"> 
+                    <p>Submit your order?</p>
+                    <button id = "order_c_yes" class = "confirm_button">Confirm</button>
+                    <button id = "order_c_no" class = "confirm_button">Cancel</button>
+                </div>
+
+                <button id= "submit_order">Submit Order</button>
+
+            </div>
+            <!-- screen for orders, within center container -->
+
+            <!-- order submitted screen, within center container -->
+            <div id="order_submitted">
+                <p id="submitted_p">Your order has been submitted</p>
+                <p id="wait_order_p">Please wait for the server</p>
+            </div>
+            <!-- order submitted screen, within center container -->
+
+            <!-- TODO -->
+            <div id= "bills_screen">
+                
+            </div>
+            <!-- TODO -->
+
+            <!-- expanded item screen, within center container -->
+            <div id="expand_screen">
+
+                <div id="expanded_window">
+
+                    <div id="fried_calamari_e">
+                        <img class="food_img_e" src="fried-calamari.jpg">
+                        <img class="stars_e" src="4stars.png">
+                        <h2>Fried Calamari</h2>
+                        <p class="food_desc_e">Fried Calamari description</p>
+                        <p class="food_contain">Contains: squid</p>
+                        <p class="food_price_e">$14</p>
+                    </div>
+
+                    <div id="crisper_e">
+                        <img class="food_img_e" src="chicken-crisper.jpg">
+                        <img class="stars_e" src="3stars.png">
+                        <h2>Chicken Crispers</h2>
+                        <p class="food_desc_e">Chicken Crispers</p>
+                        <p class="food_contain">Contains: chicken</p>
+                        <p class="food_price_e">$16</p>
+                    </div>
+
+                    <div id="bacon_shrimp_e">
+                        <img class="food_img_e" src="bacon-shrimp.jpg">
+                        <img class="stars_e" src="3stars.png">
+                        <h2>Bacon Shrimp</h2>
+                        <p class="food_desc_e">Bacon Shrimp</p>
+                        <p class="food_contain">Contains: shrimp, bacon</p>
+                        <p class="food_price_e">$14</p>
+                    </div>
+
+                    <div id="invis_drink_e">
+                        <img class="food_img_e" src="empty_glass.jpg">
+                        <img class="stars_e" src="5stars.png">
+                        <h2>Invisible Drink</h2>
+                        <p class="food_desc_e">Completely invisible drink.</p>
+                        <p class="food_contain">Contains: ?</p>
+                        <p class="food_price_e">$19</p>
+                    </div>
+
+                    <div id="wine_e">
+                        <img class="food_img_e" src="Red_wine.jpg">
+                        <img class="stars_e" src="3stars.png">
+                        <h2>Red Wine</h2>
+                        <p class="food_desc_e">Fine red wine.</p>
+                        <p class="food_contain">Contains: red wine</p>
+                        <p class="food_price_e">$18</p>
+                    </div>
+
+                    <div id="steak_e">
+                        <img class="food_img_e" src="rib-steak.jpg">
+                        <img class="stars_e" src="4stars.png">
+                        <h2>Rib-eye Steak</h2>
+                        <p class="food_desc_e">Rib-eye Steak</p>
+                        <p class="food_contain">Contains: steak</p>
+                        <p class="food_price_e">$25</p>
+                    </div>
+
+                    <div id="fish_chips_e">
+                        <img class="food_img_e" src="fish-chips.jpg">
+                        <img class="stars_e" src="4stars.png">
+                        <h2>Fish and Chips</h2>
+                        <p class="food_desc_e">Chips and Fish</p>
+                        <p class="food_contain">Contains: chips, fish</p>
+                        <p class="food_price_e">$22</p>
+                    </div>
+
+                    <div id="lemon_pie_e">
+                        <img class="food_img_e" src="lemon-pie.jpg">
+                        <img class="stars_e" src="5stars.png">
+                        <h2>Lemon Pie</h2>
+                        <p class="food_desc_e">Lemon Meringue Pie</p>
+                        <p class="food_contain">Contains: lemon, bread</p>
+                        <p class="food_price_e">$11</p>
+                    </div>
+
+                    <div id="shortcake_e">
+                        <img class="food_img_e" src="shortcake.jpg">
+                        <img class="stars_e" src="3stars.png">
+                        <h2>Shortcake</h2>
+                        <p class="food_desc_e">Strawberry Shortcake</p>
+                        <p class="food_contain">Contains: strawberry, short, cake</p>
+                        <p class="food_price_e">$12</p>
+                    </div>
+
+                </div>
+
+                <div id="expand_buttons">
+                    <button id="back">< Back</button>
+                    <button id="add_order">Add to Order</button>
                 </div>
 
             </div>
 
-            <div id="expand_buttons">
-                <button id="back">< Back</button>
-                <button id="add_order">Add to Order</button>
-            </div>
+            <!--Rating Screen-->
+            <div id="rating_screen"> 
+
+            </div>    
+            <!--Rating Screen-->
+
         </div>
-
-        <div id= "nav_port"><p></p></div>
-
-        <div id= "navigation">			
-            <button id="menu">Menu</button>
-            <button id="order">View/Submit Order</button>
-            <button id="help">Request Employee</button>
-            <button id="bills" >View Bills</button>
-        </div>
-
+        <!-- center container -->
 
     </body>
 </html>

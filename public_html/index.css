@@ -1,13 +1,30 @@
-#nav_port {
+/* TODO: fix text scaling */
+
+#welcomeBegin {
+	top: 25%;
+	left:30%;
+	right: 30%;
+	width: 40%;
 	position: fixed;
-	top:75%;
-	background-color: Linen;
-	left:0%;
-	width:100%;
-	height:25%;
-	border:1px solid #000;
+
 }
 
+#welcomeHelp {
+	top: 50%;
+	left:30%;
+	right: 30%;
+	width: 40%;
+	position: fixed;
+}
+
+#welcomeOne{
+	position: relative;
+	top:0%;
+	text-align: center;
+	font-size: 35px;
+}
+
+/* top bar for menu navigation */
 #menu_port {
 	position: fixed;
 	top:0%;
@@ -16,6 +33,73 @@
 	width:100%;
 	height:7%;
 	border:1px solid #000;
+	z-index: 3;
+}
+
+#menu_buttons button {
+	top:1%;
+	position: relative;
+	height:100%;
+	width: 100%;
+}
+/* change size of text "MENU_PORT" && "NAVIGATION" depending on screen size */
+/* this is just broad for now */
+@media only screen and (max-width: 550px){ #menu_buttons button, #navigation button { font-size: 90%;}}
+@media only screen and (max-width: 400px){ #menu_buttons button, #navigation button { font-size: 80%;}}
+@media only screen and (max-width: 360px){ #menu_buttons button, #navigation button { font-size: 65%;}}
+@media only screen and (max-width: 300px){ #menu_buttons button, #navigation button { font-size: 50%;}}
+@media only screen and (max-width: 250px){ #menu_buttons button, #navigation button { font-size: 30%;}}
+@media only screen and (max-width: 200px){ #menu_buttons button, #navigation button { font-size: 20%;}}
+@media only screen and (max-width: 150px){ #menu_buttons button, #navigation button { font-size: 10%;}}
+/* center container element: everything happens inside */
+#center_container {
+	position: fixed;
+	top: 8%;
+	left: 1%;
+	right: 1%;
+	bottom: 26%;
+}
+
+#menu_screen {
+	position: relative;
+	overflow: scroll;
+	border: 1px solid #000;
+	width: 100%;
+	height: 100%;
+}
+
+/* bottom bar for navigation*/
+#nav_port {
+	position: fixed;
+	top:75%;
+	background-color: Linen;
+	left:0%;
+	width:100%;
+	height:25%;
+	border:1px solid #000;
+	z-index: 3;
+}
+
+#navigation button{
+	position: fixed;
+	height:9%;
+	width: 33%;
+}
+
+#orders_screen {
+	position: relative;
+	overflow: scroll;
+	border: 1px solid #000;
+	width: 100%;
+	height: 100%;
+}
+
+#expand_screen {
+	position: relative;
+	overflow: scroll;
+	border: 1px solid #000;
+	width: 100%;
+	height: 100%;
 }
 
 button {
@@ -34,22 +118,6 @@ button {
 	height: 100%;
 	width:100%;
 	border:1px solid #000;
-}
-
-#welcomeOne{
-	position: fixed;
-	top:30%;
-	left: 40%;
-	text-align: left;
-	font-size: 35px;
-}
-
-#welcomeTwo{
-	position: fixed;
-	top:40%;
-	left: 10%;
-	text-align: left;
-	font-size: 30px;
 }
 
 #menu_buttons button {
@@ -79,13 +147,6 @@ button {
 	font-size: 20px;
 }
 
-
-#navigation button{
-	position: fixed;
-	height:9%;
-	width: 33%;
-}
-
 #menu {
 	top:77%;
 	left:4%;
@@ -108,6 +169,15 @@ button {
 	top:89%;
 	left:41%;
 	font-size: 24px;
+}
+
+#mag_glass {
+    position: fixed;
+    bottom: 1%;
+    right:2%;
+    height:20%;
+    width:20%;
+    max-width:150px;
 }
 
 .appetizers {
@@ -195,8 +265,8 @@ h3 {
 
 #add_order {
 	position: absolute;
-	top: 60%;
-	left: 67%;
+	bottom: 5%;
+	right: 5%;
 	height: 10%;
 	width: 30%;
 	font-size: 28px;
@@ -221,7 +291,7 @@ h2 {
 
 .food_desc_e {
 	position: absolute;	
-	top:22%;
+	top:26%;
 	left:270px;
 	text-align: left;
 	font-size: 18px;
@@ -247,7 +317,7 @@ h2 {
 	height:40px;
 	width:175px;
 	position:absolute;
-	top:19%;
+	top:22%;
 	left:265px;
 }
 
@@ -264,7 +334,7 @@ h2 {
 	position: absolute;
 	border:1px solid #000;
 	height:300px;
-	width:300px;
+	width:40%;
 	background-color: Ivory;
 }
 
@@ -272,7 +342,7 @@ h2 {
 	position: absolute;
 	margin-top: 0;
 	top: 5px;
-	left: 80px;
+	left: 40%;
 }
 
 #order_one {
@@ -314,7 +384,7 @@ h2 {
 	height:10%;
 	width:30%;
 	font-size:22px;
-	top:60%;
+	top:95%;
 	right:5%;
 }
 
@@ -424,9 +494,9 @@ h2 {
 }
 
 .order_item{
-    margin-top: 5px;
+    margin-top: 15px;
     font: 12px helvetica;
-    text-align: right;
+    text-align: left;
     margin-right: 
 }
 
@@ -438,3 +508,25 @@ h2 {
     margin-right: 20px;
     margin-left: 30px;
 }
+
+
+/* Bills screen items */
+
+#bills_screen{
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.bill{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    border: 2px black solid;
+}
+
+h5{
+    text-align: center;
+}
+

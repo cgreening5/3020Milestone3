@@ -18,10 +18,25 @@ $(document).ready(function () {
     var orderBtnDisable = false; //disables buttons in the order screen if true
     var naviBtnDisable = false; //disables navigation buttons if true
 
+    //Menu items
+    var baconShrimp = {name:"Bacon Shrimp", price:14};
+    var friedCalamari = {name:"Fried Calamari", price:14};
+    var chickenCrispers = {name:"Chicken Crispers", price:16};
+    
+    var invisibleDrink = {name:"Invisible Drink", price:19};
+    var redWine = {name:"Red Wine", price:18};
+    var ribEyeSteak = {name:"Rib-eye Steak", price:25};
+    var fishAndChips = {name:"Fish and Chips", price:22};
+    
+    var lemonPie = {name:"Lemon Pie", price:11};
+    var shortcake = {name:"Shortcake", price:12};
+
     var firstOrder = new LinkedList(); //linked list of orders
     var secondOrder = new LinkedList();
     var thirdOrder = new LinkedList();
     var fourthOrder = new LinkedList();
+    
+    var bill1 = null;
 
     $(lastMenu).css("background-color", hilite);	//initial tab of menu is appetizers
 
@@ -31,24 +46,38 @@ $(document).ready(function () {
     $(".appetizers").show();
     $(".ordered").hide();
     $("#menu_buttons").show();
-    $("#menu_port").show();
+    $("#menu_port").hide();/*was 'show'*/
     $("#menu_screen").hide();
     $("#orders_screen").children().hide();
     $("#order_one").show();
     $("#new_order_two").show();
     $("#submit_order").show();
     $("#orders_screen").hide();
+    $("#bills_screen").hide();
     $("#expanded_window").children().hide();
     $("#expand_screen").hide();
     $("#order_submitted").hide();
+    $("#nav_port").hide();/* wasnt here originally */
 
     /*
      * Navigation Button Functions
      */
 
+    /* button to begin the system */
+    $("#welcomeBegin").click(function () {
+        lastNav = $("#menu").clickHilite(lastNav);
+        currPage = $("#menu_screen").clickShow(currPage);
+        $("#menu_port").show();
+        $("#nav_port").show();
+        $("#welcome").hide();
+        $("#menu").css("background-color", hilite);
+    })
+
     //highlights menu button clicked, hides previous navigation screen, shows the menu screen
     $("#menu").click(function () {
         if (!naviBtnDisable) {
+            $("#menu_port").show();
+            $("#center_container").css("top", "8%");
             lastNav = $("#menu").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#menu_screen").clickShow(currPage);
@@ -57,9 +86,10 @@ $(document).ready(function () {
 
     //highlights orders button clicked, hides previous navigation screen, shows the orders screen, needs at least one item ordered
     $("#order").click(function () {
-
         var order_panel = $("#order1");
         if (orderCount > 0 && !naviBtnDisable) {
+            $("#center_container").css("top","0%");
+            $("#menu_port").hide();
             lastNav = $("#order").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#orders_screen").clickShow(currPage);
@@ -69,6 +99,8 @@ $(document).ready(function () {
     //highlights bills button clicked, hides previous navigation screen, shows the bills screen, needs to submit order first
     $("#bills").click(function () {
         if (orderSubmitted && !naviBtnDisable) {
+            $("#center_container").css("top", "0%");
+            $("#menu_port").hide();
             lastNav = $("#bills").clickHilite(lastNav);
             $(currPage).hide();
             prevPage = currPage;
@@ -93,14 +125,13 @@ $(document).ready(function () {
         lastMenu = $("#dessert_button").clickHilite(lastMenu);
         lastMenuScreen = $(".dessert").clickShow(lastMenuScreen);
     });
-    
-    //expands menu item when clicked
+   //expands menu item when clicked
     $("#fried_calamari").click(function () {
         lastExpandScreen = $("#fried_calamari_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Fried Calamari", price:14};
+        currItem = friedCalamari;
         itemOrderNote = "#calamari_ordered";
         ;
     });
@@ -114,7 +145,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Chicken Crispers", price:16};
+        currItem = chickenCrispers;
         itemOrderNote = "#crisper_ordered";
         ;
     });
@@ -124,7 +155,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Bacon Shrimp", price:14};
+        currItem = baconShrimp;
         itemOrderNote = "#bacon_shrimp_ordered";
         ;
     });
@@ -134,7 +165,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Invisible Drink", price:19};
+        currItem = invisibleDrink;
         itemOrderNote = "#invis_drink_ordered";
         ;
     });
@@ -144,7 +175,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Red Wine", price:18};
+        currItem = redWine;
         itemOrderNote = "#wine_ordered";
         ;
     });
@@ -154,7 +185,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Rib-eye Steak", price:25};
+        currItem = ribEyeSteak;
         itemOrderNote = "#steak_ordered";
         ;
     });
@@ -164,7 +195,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Fish and Chips", price:22};
+        currItem = fishAndChips;
         itemOrderNote = "#fish_chips_ordered";
         ;
     });
@@ -174,7 +205,7 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Lemon Pie", price:11};
+        currItem = lemonPie;
         itemOrderNote = "#lemon_pie_ordered";
         ;
     });
@@ -184,11 +215,10 @@ $(document).ready(function () {
         $(currPage).hide();
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
-        currItem = {name:"Shortcake", price:12};
+        currItem = shortcake;
         itemOrderNote = "#shortcake_ordered";
         ;
     });
-
 
     //back button for expanded food items, brings back to current menu shown
     
@@ -217,9 +247,9 @@ $(document).ready(function () {
             currList = $("#order1_list");
         }
 
-        var searchNode = currOrder.search(currItem.name);
+        var searchNode = currOrder.search(currItem);
         if (searchNode == -1) {
-            currOrder.add(currItem.name);
+            currOrder.add(currItem);
             itemCount++;
             currList.append(getOrderItem(currItem, 1));
         } 
@@ -243,11 +273,11 @@ $(document).ready(function () {
         deleteButton.attr("src", "delete_button.svg");
         
         orderItem.append(deleteButton);
-        orderItem.attr("id", item.name.replace(/ /g, "_"));
+        orderItem.attr("id", "order_item_" + item.name.replace(/ /g, "_"));
         orderItem.attr("class", "order_item");
-        orderItem.append(item.name + "................$" + item.price);
+        orderItem.append(item.name + " (x" + quantity);
+        orderItem.append(") ................$" + (item.price * quantity));
         orderItem.append("</br>");
-        orderItem.append("-x" + quantity);
         
         orderItem.data("item", item);
         
@@ -312,12 +342,72 @@ $(document).ready(function () {
                 itemCount = 0;
                 orderSubmitted = true;
                 updateButtons();
+                submitOrders();
                 ;
             });
 
         }
         ;
     });
+
+   //Make new bills from orders
+    function submitOrders(){
+        var billNode;
+        var billHTML;
+        var item;
+        
+        if (!firstOrder.isEmpty())
+        {
+            if (bill1 == null){
+                bill1 = new LinkedList();
+                billHTML = getBillHTML(1);
+                $("#bills_screen").append(billHTML);
+            }
+            
+            else
+                billHTML = $("#bill1");
+            
+            firstOrder.initTraverse();
+            item = firstOrder.traverse();
+            while (item !== null)
+            {
+                billNode = firstOrder.search(item);
+                bill1.add(item);
+                billHTML.append(getBillItem(item, billNode.count));
+                item = firstOrder.traverse();
+            }
+        }
+
+        $(".order_item").remove();
+        firstOrder.clear();
+    };
+   
+    //Creates a "bill" HTML element with id bill[billno], ie. bill1, bill2, etc.
+    function getBillHTML(billno)
+    {
+        var div;
+        var newBill = $("<div></div>");
+        newBill.attr("id", "bill" + billno);
+        newBill.attr("class", "bill");
+        div = $("<h5>Bill " + billno + "</h5>");
+        newBill.append(div);
+        return newBill;
+    }
+    
+        //Returns the HTML for a bill item.
+    function getBillItem(item, quantity)
+    {
+
+        var billItem = $("<div></div>");
+        billItem.attr("id", "bill_item_ " + item.name.replace(/ /g, "_"));
+        billItem.attr("class", "bill_item");
+        billItem.append(item.name + " (x" + quantity);
+        billItem.append(") ................$" + (item.price * quantity));
+        billItem.append("</br>");
+        
+        billItem.data("item", item);
+        return billItem;
+    }
 
     //update order and bills button, see if they should be disabled or regular color
     function updateButtons() {

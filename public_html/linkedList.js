@@ -15,8 +15,16 @@ function LinkedList() {
 
 //Traverse the linked list -- use initTraverse to begin or reset the traversal
 LinkedList.prototype.traverse = function () {
-    var data = this.traverseNode.data;
-    this.traverseNode = this.traverseNode.next;
+    var data;
+    
+    if (this.traverseNode !== null){
+        data = this.traverseNode.data;
+        this.traverseNode = this.traverseNode.next;
+    }
+    
+    else 
+        data = null;
+    
     return data;
 };
 
@@ -94,6 +102,14 @@ LinkedList.prototype.remove = function (data) {
     
     return -1;
 };
+
+LinkedList.prototype.isEmpty = function () {
+    return this.head == null;
+};
+
+LinkedList.prototype.clear = function(){
+    this.head = null;
+}
 
 LinkedList.prototype.increment = function (node) {
     if (node != null)
