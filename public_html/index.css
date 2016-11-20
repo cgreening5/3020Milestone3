@@ -636,6 +636,7 @@ ul.order_list span + span
 }
 
 .bill{
+    margin: 10px;
     height: 300px;
     width: 300px;
     border: 2px black solid;
@@ -646,26 +647,14 @@ h5{
 }
 
 
-
 /* Bills screen items */
 
-ul.order_list span + span 
-{
-    float: right;
-    padding-left: 0.33em;
-}
-
 #bills_screen{
-	position: relative;
-	display: flex;
+    position: relative;
+    display: flex;
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
-}
-
-.bill{
-    margin: 10px;
-    background-color: ivory;
 }
 
 .bill_item{

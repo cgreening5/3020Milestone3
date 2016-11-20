@@ -1,19 +1,19 @@
 
-	var currQty = 0; //current quantity selected in the expanded window
-	var currOrderSelect = null;
-	function getQty() {
-		var dropdown = document.getElementById("qtySelect");
-		var qty = parseInt(dropdown.options[dropdown.selectedIndex].value, 10);
-		currQty = qty;
-	}
-	function getOrder() {
-		var dropdown = document.getElementById("orderSelect");
-		var order = (dropdown.options[dropdown.selectedIndex].value);
-		currOrderSelect = order;
-	}
+var currQty = 0; //current quantity selected in the expanded window
+var currOrderSelect = null;
+function getQty() {
+    var dropdown = document.getElementById("qtySelect");
+    var qty = parseInt(dropdown.options[dropdown.selectedIndex].value, 10);
+    currQty = qty;
+}
+function getOrder() {
+    var dropdown = document.getElementById("orderSelect");
+    var order = (dropdown.options[dropdown.selectedIndex].value);
+    currOrderSelect = order;
+}
 $(document).ready(function () {
-	
-	var orderDropdown = $("#orderSelect");
+
+    var orderDropdown = $("#orderSelect");
     var lastNav = null;	//last navigation button clicked
     var lastMenu = $("#appetizer_button"); //last menu button clicked
     var regColor = "DarkSlateGray"; //regular non highlighted button color
@@ -33,20 +33,20 @@ $(document).ready(function () {
     var naviBtnDisable = false; //disables navigation buttons if true
 
     //Menu items
-    var baconShrimp = {name:"Bacon Shrimp", price:14};
-    var friedCalamari = {name:"Fried Calamari", price:14};
-    var chickenCrispers = {name:"Chicken Crispers", price:16};
-    
-    var invisibleDrink = {name:"Invisible Drink", price:19};
-    var redWine = {name:"Red Wine", price:18};
-    var ribEyeSteak = {name:"Rib-eye Steak", price:25};
-    var fishAndChips = {name:"Fish and Chips", price:22};
-    
-    var lemonPie = {name:"Lemon Pie", price:11};
-    var shortcake = {name:"Shortcake", price:12};
-    
+    var baconShrimp = {name: "Bacon Shrimp", price: 14};
+    var friedCalamari = {name: "Fried Calamari", price: 14};
+    var chickenCrispers = {name: "Chicken Crispers", price: 16};
+
+    var invisibleDrink = {name: "Invisible Drink", price: 19};
+    var redWine = {name: "Red Wine", price: 18};
+    var ribEyeSteak = {name: "Rib-eye Steak", price: 25};
+    var fishAndChips = {name: "Fish and Chips", price: 22};
+
+    var lemonPie = {name: "Lemon Pie", price: 11};
+    var shortcake = {name: "Shortcake", price: 12};
+
     var map = new Object();
-    
+
     map[baconShrimp.name] = $("#bacon_shrimp");
     map[friedCalamari.name] = $("#fried_calamari");
     map[chickenCrispers.name] = $("#crispers");
@@ -66,6 +66,8 @@ $(document).ready(function () {
     var bill2 = null;
     var bill3 = null;
     var bill4 = null;
+
+
 
     $(lastMenu).css("background-color", hilite);	//initial tab of menu is appetizers
 
@@ -87,8 +89,8 @@ $(document).ready(function () {
     $("#expanded_window").children().hide();
     $("#expand_screen").hide();
     $("#order_submitted").hide();
-	$("#submit_order").hide();
-	$("#not_implemented").hide();
+    $("#submit_order").hide();
+    $("#not_implemented").hide();
     $("#nav_port").hide();/* wasnt here originally */
 
     /*
@@ -113,8 +115,8 @@ $(document).ready(function () {
             lastNav = $("#menu").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#menu_screen").clickShow(currPage);
-			$("#submit_order").hide();
-			$("#center_container").css("bottom","26%");
+            $("#submit_order").hide();
+            $("#center_container").css("bottom", "26%");
         }
     });
 
@@ -127,8 +129,8 @@ $(document).ready(function () {
             lastNav = $("#order").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#orders_screen").clickShow(currPage);
-			$("#center_container").css("bottom","35%");
-			$("#submit_order").show();
+            $("#center_container").css("bottom", "35%");
+            $("#submit_order").show();
         }
     });
 
@@ -141,11 +143,10 @@ $(document).ready(function () {
             $(currPage).hide();
             prevPage = currPage;
             currPage = $("#bills_screen").clickShow(currPage);
-			$("#submit_order").hide();
-			$("#center_container").css("bottom","26%");
+            $("#submit_order").hide();
+            $("#center_container").css("bottom", "26%");
         }
     });
-	
 
 
 
@@ -174,8 +175,8 @@ $(document).ready(function () {
         currPage = $("#expand_screen").clickShow(currPage);
         currItem = friedCalamari;
         itemOrderNote = "#calamari_ordered";
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         ;
     });
 
@@ -184,8 +185,8 @@ $(document).ready(function () {
      */
 
     $("#crisper").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#crisper_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -196,8 +197,8 @@ $(document).ready(function () {
     });
 
     $("#bacon_shrimp").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#bacon_shrimp_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -208,8 +209,8 @@ $(document).ready(function () {
     });
 
     $("#invis_drink").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#invis_drink_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -220,8 +221,8 @@ $(document).ready(function () {
     });
 
     $("#wine").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#wine_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -232,8 +233,8 @@ $(document).ready(function () {
     });
 
     $("#steak").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#steak_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -244,8 +245,8 @@ $(document).ready(function () {
     });
 
     $("#fish_chips").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#fish_chips_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -256,8 +257,8 @@ $(document).ready(function () {
     });
 
     $("#lemon_pie").click(function () {
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         lastExpandScreen = $("#lemon_pie_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -273,8 +274,8 @@ $(document).ready(function () {
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
         currItem = shortcake;
-		$("#center_container").css("top","0%");
-		$("#menu_port").hide();
+        $("#center_container").css("top", "0%");
+        $("#menu_port").hide();
         itemOrderNote = "#shortcake_ordered";
         ;
     });
@@ -285,124 +286,120 @@ $(document).ready(function () {
         $("#expand_screen").hide();
         $(prevPage).show();
         currPage = prevPage;
-		$("#center_container").css("top","8%");
-		$("#menu_port").show();
+        $("#center_container").css("top", "8%");
+        $("#menu_port").show();
         ;
     });
 
     //adds items to orders, current max is 8 different per order, if exceeded makes a new order automatically
-    
+
+
     $("#add_order").click(function () {
         var currOrder = null;
         var currList = null;
-		var order = 0;
-		
+        var order = 0;
+
 
         if (currOrderSelect === "New") {
-			
-            orderCount++;
-			order = orderCount;
-			$("#orderSelect option[value='New']").remove();
-			if(orderCount < 4) {
-				if(orderCount == 1) {
-					$(orderDropdown).append($('<option>', {
-						value: "Order 1",
-						text: 'Order 1'
-					}));
-				}
-				if(orderCount == 2) {
-					$(orderDropdown).append($('<option>', {
-						value: "Order 2",
-						text: 'Order 2'
-					}));
-					$("#new_order_two").hide();
-					$("#new_order_three").show();
-					$("#order_two").show();
-				}
-				if(orderCount == 3) {
-					$(orderDropdown).append($('<option>', {
-						value: "Order 3",
-						text: 'Order 3'
-					}));
-					$("#new_order_three").hide();
-					$("#new_order_four").show();
-					$("#order_three").show();
-				}
-				$(orderDropdown).append($('<option>', {
-					value: "New",
-					text: 'New Order'
-			}));
-			}
-			if(orderCount == 4) {
-				$(orderDropdown).append($('<option>', {
-					value: "Order 4",
-					text: 'Order 4'
-				}));
-				$("#new_order_four").hide();
-				$("#order_four").show();
-			}
-			
-			
-			
-			
-        } 
-        else {
-			if(currOrderSelect === "Order 1")
-				order = 1;
-			if(currOrderSelect === "Order 2")
-				order = 2;
-			if(currOrderSelect === "Order 3")
-				order = 3;
-			if(currOrderSelect === "Order 4")
-				order = 4;
-        }
-		
 
-		if(order == 1) {
-			currOrder = firstOrder;
+            orderCount++;
+            order = orderCount;
+            $("#orderSelect option[value='New']").remove();
+            if (orderCount < 4) {
+                if (orderCount == 1) {
+                    $(orderDropdown).append($('<option>', {
+                        value: "Order 1",
+                        text: 'Order 1'
+                    }));
+                }
+                if (orderCount == 2) {
+                    $(orderDropdown).append($('<option>', {
+                        value: "Order 2",
+                        text: 'Order 2'
+                    }));
+                    $("#new_order_two").hide();
+                    $("#new_order_three").show();
+                    $("#order_two").show();
+                }
+                if (orderCount == 3) {
+                    $(orderDropdown).append($('<option>', {
+                        value: "Order 3",
+                        text: 'Order 3'
+                    }));
+                    $("#new_order_three").hide();
+                    $("#new_order_four").show();
+                    $("#order_three").show();
+                }
+                $(orderDropdown).append($('<option>', {
+                    value: "New",
+                    text: 'New Order'
+                }));
+            }
+            if (orderCount == 4) {
+                $(orderDropdown).append($('<option>', {
+                    value: "Order 4",
+                    text: 'Order 4'
+                }));
+                $("#new_order_four").hide();
+                $("#order_four").show();
+            }
+
+
+
+
+        } else {
+            if (currOrderSelect === "Order 1")
+                order = 1;
+            if (currOrderSelect === "Order 2")
+                order = 2;
+            if (currOrderSelect === "Order 3")
+                order = 3;
+            if (currOrderSelect === "Order 4")
+                order = 4;
+        }
+
+
+        if (order == 1) {
+            currOrder = firstOrder;
             currList = $("#order1_list");
-		}
-		else if(order == 2) {
-			currOrder = secondOrder;
+        } else if (order == 2) {
+            currOrder = secondOrder;
             currList = $("#order2_list");
-		}
-		else if(order == 3) {
-			currOrder = thirdOrder;
+        } else if (order == 3) {
+            currOrder = thirdOrder;
             currList = $("#order3_list");
-		}
-		else if(order == 4) {
-			currOrder = fourthOrder;
+        } else if (order == 4) {
+            currOrder = fourthOrder;
             currList = $("#order4_list");
-		}
-		
-		var searchNode = currOrder.search(currItem);
-		
+        }
+
+        var searchNode = currOrder.search(currItem);
+
         if (searchNode == -1) {
             var node = currOrder.add(currItem);
-			currOrder.setCount(node, currQty);
+            currOrder.setCount(node, currQty);
             itemCount++;
             currList.append(getOrderItem(currItem, currQty));
-			
-        } 
-        else {
-			
+
+        } else {
+
             currOrder.setCount(searchNode, (searchNode.count + currQty));
-			
+
             $("#item_name_" + currItem.name.replace(/ /g, "_")).html(currItem.name + " (x" + searchNode.count + ")");
-			$("#item_price_" + currItem.name.replace(/ /g, "_")).html("$"+(currItem.price * searchNode.count));
-			
+            $("#item_price_" + currItem.name.replace(/ /g, "_")).html("$" + (currItem.price * searchNode.count));
+
         }
-		
-		if(itemCount == 1) {
-			updateButtons();
-		}
-		
-		$("#qtySelect").val('1');
+
+        if (itemCount == 1) {
+            updateButtons();
+        }
+
+        $("#qtySelect").val('1');
         $(itemOrderNote).show();
         $(currPage).hide();
         $(prevPage).show();
-		$("#center_container").css("top","8%");
-		$("#menu_port").show();
+        $("#center_container").css("top", "8%");
+        $("#menu_port").show();
         currPage = prevPage;
     });
 
@@ -412,7 +409,6 @@ $(document).ready(function () {
         var deleteButton = $("<input></input>");
         var name = $("<span></span>");
         var cost = $("<span></span>");
-        
 
         deleteButton.attr("type", "image");
         deleteButton.attr("class", "delete_order_item");
@@ -421,12 +417,12 @@ $(document).ready(function () {
         orderItem.append(deleteButton);
         orderItem.attr("id", "order_item_" + item.name.replace(/ /g, "_"));
         orderItem.attr("class", "order_item");
-        
-		name.attr("id", "item_name_" + item.name.replace(/ /g, "_"));
+
+        name.attr("id", "item_name_" + item.name.replace(/ /g, "_"));
         name.append(item.name + " (x" + quantity + ")");
         orderItem.append(name);
-		cost.attr("id", "item_price_" + item.name.replace(/ /g, "_"));
-        cost.append("$"+(item.price * quantity));
+        cost.attr("id", "item_price_" + item.name.replace(/ /g, "_"));
+        cost.append("$" + (item.price * quantity));
         orderItem.append(cost);
         orderItem.append("</br>");
 
@@ -434,72 +430,72 @@ $(document).ready(function () {
 
         return orderItem;
     }
-    
-    $("#order_one").on("click", ".delete_order_item", function() { 
+
+    $("#order_one").on("click", ".delete_order_item", function () {
         var div = $(this).closest("div");
         var item = div.data("item");
         var menuitem;
         firstOrder.remove(item);
         menuitem = map[item.name];
         menuitem.find(".ordered").hide();
-		itemCount--;	
+        itemCount--;
         div.fadeOut(250);
-		$(div).remove();
-		updateButtons();	
+        $(div).remove();
+        updateButtons();
     });
-	
-	$("#order_two").on("click", ".delete_order_item", function() { 
+
+    $("#order_two").on("click", ".delete_order_item", function () {
         var div = $(this).closest("div");
         var item = div.data("item");
         var menuitem;
         secondOrder.remove(item);
         menuitem = map[item.name];
         menuitem.find(".ordered").hide();
-		itemCount--;	
+        itemCount--;
         div.fadeOut(250);
-		$(div).remove();
-		updateButtons();
+        $(div).remove();
+        updateButtons();
     });
-	
-	$("#order_three").on("click", ".delete_order_item", function() { 
+
+    $("#order_three").on("click", ".delete_order_item", function () {
         var div = $(this).closest("div");
         var item = div.data("item");
         var menuitem;
         thirdOrder.remove(item);
         menuitem = map[item.name];
         menuitem.find(".ordered").hide();
-		itemCount--;	
+        itemCount--;
         div.fadeOut(250);
-		$(div).remove();
-		updateButtons();
+        $(div).remove();
+        updateButtons();
     });
-	
-	$("#order_four").on("click", ".delete_order_item", function() { 
+
+    $("#order_four").on("click", ".delete_order_item", function () {
         var div = $(this).closest("div");
         var item = div.data("item");
         var menuitem;
         fourthOrder.remove(item);
         menuitem = map[item.name];
         menuitem.find(".ordered").hide();
-		itemCount--;	
+        itemCount--;
         div.fadeOut(250);
-		$(div).remove();
-		updateButtons();
+        $(div).remove();
+        updateButtons();
     });
 
     //make new orders as the buttons are clicked
     $("#new_order_two").click(function () {
         if (!orderBtnDisable) {
-			$("#orderSelect option[value='New']").remove();
-			$(orderDropdown).append($('<option>', {
-				value: "Order 2",
-				text: 'Order 2'
-			}));
-			$(orderDropdown).append($('<option>', {
-				value: "New",
-				text: 'New Order'
-			}));
-			
+            $("#orderSelect option[value='New']").remove();
+            $(orderDropdown).append($('<option>', {
+                value: "Order 2",
+                text: 'Order 2'
+            }));
+            $(orderDropdown).append($('<option>', {
+                value: "New",
+                text: 'New Order'
+            }));
+
             orderCount = 2;
             $("#new_order_two").hide();
             $("#order_two").show();
@@ -510,31 +506,31 @@ $(document).ready(function () {
 
     $("#new_order_three").click(function () {
         if (!orderBtnDisable) {
-			$("#orderSelect option[value='New']").remove();
-			$(orderDropdown).append($('<option>', {
-				value: "Order 3",
-				text: 'Order 3'
-			}));
-			$(orderDropdown).append($('<option>', {
-				value: "New",
-				text: 'New Order'
-			}));
-			
+            $("#orderSelect option[value='New']").remove();
+            $(orderDropdown).append($('<option>', {
+                value: "Order 3",
+                text: 'Order 3'
+            }));
+            $(orderDropdown).append($('<option>', {
+                value: "New",
+                text: 'New Order'
+            }));
+
             orderCount = 3;
             $("#new_order_three").hide();
             $("#order_three").show();
-			$("#new_order_four").show();
+            $("#new_order_four").show();
         }
         ;
     });
-	
-	$("#new_order_four").click(function () {
+
+    $("#new_order_four").click(function () {
         if (!orderBtnDisable) {
-			$("#orderSelect option[value='New']").remove();
-			$(orderDropdown).append($('<option>', {
-				value: "Order 4",
-				text: 'Order 4'
-			}));
+            $("#orderSelect option[value='New']").remove();
+            $(orderDropdown).append($('<option>', {
+                value: "Order 4",
+                text: 'Order 4'
+            }));
             orderCount = 4;
             $("#new_order_four").hide();
             $("#order_four").show();
@@ -559,11 +555,11 @@ $(document).ready(function () {
                 naviBtnDisable = false;
                 orderBtnDisable = false;
                 currPage = $("#order_submitted").clickShow(currPage);
-				$("#order_confirm").hide();
-				$("#submit_order").hide();
-				$("#center_container").css("bottom","26%");
+                $("#order_confirm").hide();
+                $("#submit_order").hide();
+                $("#center_container").css("bottom", "26%");
                 currPage = $("#order_submitted").clickShow(currPage);
-				
+
                 lastNav = null;
                 $(".ordered").hide();
                 itemCount = 0;
@@ -573,6 +569,8 @@ $(document).ready(function () {
                 ;
             });
 
+        } else if (itemCount == 0) {
+            naviBtnDisable = true;
             orderBtnDisable = true;
             $("#order_warning").show();
             $("#warning_ret").click(function () {
@@ -580,19 +578,10 @@ $(document).ready(function () {
                 orderBtnDisable = false;
                 $("#order_warning").hide();
             });
+            updateButtons();
         }
-		else if(itemCount == 0) {
-			naviBtnDisable = true;
-            orderBtnDisable = true;
-			$("#order_warning").show();
-			$("#warning_ret").click(function () {
-                naviBtnDisable = false;
-                orderBtnDisable = false;
-                $("#order_warning").hide();
-            });
-			updateButtons();
-		};
-			
+        ;
+
     });
 
     function submitOrders() {
@@ -629,20 +618,16 @@ $(document).ready(function () {
                 //an HTML element
                 if (node == -1)
                 {
-                    node = firstOrder.search(item);
-                    var newNode = bill1.add(item);
-					bill1.setCount(newNode, node.count);
+                    node = order.search(item);
+                    var newNode = bill.add(item);
+                    bill.setCount(newNode, node.count);
                     billHTML.append(getBillItem(item, node.count));
                 }
-                
 
                 //Otherwise, instead of adding a new element, replace it so that
                 //it reflects the new count
                 else
                 {
-					var temp = node.count;
-                    bill1.setCount(node, temp + firstOrder.search(item).count);
-					
                     var temp = node.count;
                     bill.setCount(node, temp + order.search(item).count);
 
@@ -684,6 +669,13 @@ $(document).ready(function () {
         name.attr("id", "bill_item_name" + item.name.replace(/ /g, "_"));
         name.attr("class", "bill_item_name");
         name.append(item.name + " (x" + quantity);
+        billItem.append(name);
+
+        cost.attr("id", "bill_item_price" + item.name.replace(/ /g, "_"));
+        cost.attr("class", "bill_item_price");
+        cost.append(") ................$" + (item.price * quantity));
+
+        billItem.append(cost);
         billItem.append("</br>");
 
         billItem.data("item", item);
@@ -709,7 +701,10 @@ $(document).ready(function () {
         if (lastClick != null) {
             $(lastClick).css("background-color", regColor);
         }
-		if(itemCount < 1) {updateButtons()};
+        if (itemCount < 1) {
+            updateButtons()
+        }
+        ;
         lastClick = this;
         $(this).css("background-color", hilite);
         return lastClick;
@@ -726,26 +721,26 @@ $(document).ready(function () {
         $(this).show();
         return lastClick;
     };
-	
-	$("#mag_glass").click(function () {
+
+    $("#mag_glass").click(function () {
         naviBtnDisable = true;
         orderBtnDisable = true;
-		$("#not_implemented").show();
+        $("#not_implemented").show();
     });
-	$("#help").click(function () {
+    $("#help").click(function () {
         naviBtnDisable = true;
         orderBtnDisable = true;
-		$("#not_implemented").show();
+        $("#not_implemented").show();
     });
-	$("#welcomeHelp").click(function () {
+    $("#welcomeHelp").click(function () {
         naviBtnDisable = true;
         orderBtnDisable = true;
-		$("#not_implemented").show();
+        $("#not_implemented").show();
     });
-	$("#not_imp_ret").click(function () {
+    $("#not_imp_ret").click(function () {
         naviBtnDisable = false;
         orderBtnDisable = false;
-		$("#not_implemented").hide();
+        $("#not_implemented").hide();
     });
-	
+
 });
