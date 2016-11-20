@@ -61,16 +61,17 @@ $(document).ready(function () {
     var secondOrder = new LinkedList();
     var thirdOrder = new LinkedList();
     var fourthOrder = new LinkedList();
-    
+
     var bill1 = null;
-    
-    
+    var bill2 = null;
+    var bill3 = null;
+    var bill4 = null;
 
     $(lastMenu).css("background-color", hilite);	//initial tab of menu is appetizers
 
     //hide everything except welcome screen and navigation buttons
     updateButtons();
-	
+
     $("#menu_screen").children().hide();
     $(".appetizers").show();
     $(".ordered").hide();
@@ -121,7 +122,7 @@ $(document).ready(function () {
     $("#order").click(function () {
         var order_panel = $("#order1");
         if (itemCount > 0 && !naviBtnDisable) {
-            $("#center_container").css("top","0%");
+            $("#center_container").css("top", "0%");
             $("#menu_port").hide();
             lastNav = $("#order").clickHilite(lastNav);
             prevPage = currPage;
@@ -147,6 +148,7 @@ $(document).ready(function () {
 	
 
 
+
     //highlights most recently clicked menu buttons, shows current menu, hides previous menu
     $("#appetizer_button").click(function () {
         lastMenu = $("#appetizer_button").clickHilite(lastMenu); //highlight appetizer button 
@@ -164,7 +166,7 @@ $(document).ready(function () {
         lastMenu = $("#dessert_button").clickHilite(lastMenu);
         lastMenuScreen = $(".dessert").clickShow(lastMenuScreen);
     });
-   //expands menu item when clicked
+    //expands menu item when clicked
     $("#fried_calamari").click(function () {
         lastExpandScreen = $("#fried_calamari_e").clickShow(lastExpandScreen);
         $(currPage).hide();
@@ -176,7 +178,7 @@ $(document).ready(function () {
 		$("#menu_port").hide();
         ;
     });
-    
+
     /*
      * Menu Item Buttons
      */
@@ -278,7 +280,7 @@ $(document).ready(function () {
     });
 
     //back button for expanded food items, brings back to current menu shown
-    
+
     $("#back").click(function () {
         $("#expand_screen").hide();
         $(prevPage).show();
@@ -290,7 +292,6 @@ $(document).ready(function () {
 
     //adds items to orders, current max is 8 different per order, if exceeded makes a new order automatically
     
-	
     $("#add_order").click(function () {
         var currOrder = null;
         var currList = null;
@@ -405,17 +406,18 @@ $(document).ready(function () {
         currPage = prevPage;
     });
 
-    function getOrderItem(item, quantity){
-        
+    function getOrderItem(item, quantity) {
+
         var orderItem = $("<div></div>");
         var deleteButton = $("<input></input>");
         var name = $("<span></span>");
         var cost = $("<span></span>");
         
+
         deleteButton.attr("type", "image");
         deleteButton.attr("class", "delete_order_item");
         deleteButton.attr("src", "delete_button.svg");
-        
+
         orderItem.append(deleteButton);
         orderItem.attr("id", "order_item_" + item.name.replace(/ /g, "_"));
         orderItem.attr("class", "order_item");
@@ -427,9 +429,9 @@ $(document).ready(function () {
         cost.append("$"+(item.price * quantity));
         orderItem.append(cost);
         orderItem.append("</br>");
-        
+
         orderItem.data("item", item);
-        
+
         return orderItem;
     }
     
@@ -571,6 +573,13 @@ $(document).ready(function () {
                 ;
             });
 
+            orderBtnDisable = true;
+            $("#order_warning").show();
+            $("#warning_ret").click(function () {
+                naviBtnDisable = false;
+                orderBtnDisable = false;
+                $("#order_warning").hide();
+            });
         }
 		else if(itemCount == 0) {
 			naviBtnDisable = true;
@@ -586,29 +595,36 @@ $(document).ready(function () {
 			
     });
 
-   //Make new bills from orders
-    function submitOrders(){
+    function submitOrders() {
+        bill1 = submitOrder(firstOrder, 1, bill1);
+        bill2 = submitOrder(secondOrder, 2, bill2);
+        bill3 = submitOrder(thirdOrder, 3, bill3);
+        bill4 = submitOrder(fourthOrder, 4, bill4);
+        $(".order_item").remove();
+    }
+
+    //Make new bills from orders, appends it to the bill screen
+    function submitOrder(order, orderNo, bill) {
         var node;
         var billHTML;
         var item;
-        
-        if (!firstOrder.isEmpty())
+
+        if (!order.isEmpty())
         {
-            if (bill1 == null){
-                bill1 = new LinkedList();
-                billHTML = getBillHTML(1);
+            if (bill == null) {
+                bill = new LinkedList();
+                billHTML = getBillHTML(orderNo);
                 $("#bills_screen").append(billHTML);
-            }
-            
+            } 
             else
-                billHTML = $("#bill1");
-            
-            firstOrder.initTraverse();
-            item = firstOrder.traverse();
+                billHTML = $("#bill" + orderNo);
+
+            order.initTraverse();
+            item = order.traverse();
             while (item !== null)
             {
-                node = bill1.search(item);
-                
+                node = bill.search(item);
+
                 //If the item was not already in the bill, add it and add
                 //an HTML element
                 if (node == -1)
@@ -619,6 +635,7 @@ $(document).ready(function () {
                     billHTML.append(getBillItem(item, node.count));
                 }
                 
+
                 //Otherwise, instead of adding a new element, replace it so that
                 //it reflects the new count
                 else
@@ -626,21 +643,22 @@ $(document).ready(function () {
 					var temp = node.count;
                     bill1.setCount(node, temp + firstOrder.search(item).count);
 					
+                    var temp = node.count;
+                    bill.setCount(node, temp + order.search(item).count);
+
                     $("#bill_item_name" + node.data.name.replace(/ /g, "_")).html(node.data.name + " (x" + node.count);
-					$("#bill_item_price" + node.data.name.replace(/ /g, "_")).html(") ................$" + (item.price * node.count));
+                    $("#bill_item_price" + node.data.name.replace(/ /g, "_")).html(") ................$" + (item.price * node.count));
                 }
-                
-                item = firstOrder.traverse();
+
+                item = order.traverse();
             }
         }
 
-        $(".order_item").remove();
-        firstOrder.clear();
-		secondOrder.clear();
-		thirdOrder.clear();
-		fourthOrder.clear();
-    };
-   
+        order.clear();
+        return bill;
+    }
+    ;
+
     //Creates a "bill" HTML element with id bill[billno], ie. bill1, bill2, etc.
     function getBillHTML(billno)
     {
@@ -652,29 +670,22 @@ $(document).ready(function () {
         newBill.append(div);
         return newBill;
     }
-    
-        //Returns the HTML for a bill item.
+
+    //Returns the HTML for a bill item.
     function getBillItem(item, quantity)
     {
 
         var billItem = $("<div></div>");
-		var name = $("<span></span>");
+        var name = $("<span></span>");
         var cost = $("<span></span>");
         billItem.attr("id", "bill_item_" + item.name.replace(/ /g, "_"));
         billItem.attr("class", "bill_item");
-		
-		name.attr("id", "bill_item_name" + item.name.replace(/ /g, "_"));
-		name.attr("class", "bill_item_name");
+
+        name.attr("id", "bill_item_name" + item.name.replace(/ /g, "_"));
+        name.attr("class", "bill_item_name");
         name.append(item.name + " (x" + quantity);
-		billItem.append(name);
-		
-		cost.attr("id", "bill_item_price" + item.name.replace(/ /g, "_"));
-		cost.attr("class", "bill_item_price");
-        cost.append(") ................$" + (item.price * quantity));
-		
-		billItem.append(cost);
         billItem.append("</br>");
-        
+
         billItem.data("item", item);
         return billItem;
     }
