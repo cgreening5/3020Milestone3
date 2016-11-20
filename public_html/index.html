@@ -1,4 +1,4 @@
-﻿<html>
+<html>
     <head>
         <title>HCI Project Milestone 3</title>
         <meta charset="UTF-8">
@@ -192,11 +192,12 @@
             </div>
             <!-- order submitted screen, within center container -->
 
-            <!-- TODO -->
+            <!-- Bills Screen - mostly generated using JQuery -->
             <div id= "bills_screen">
-                
+                <div id="bill_wrapper"></div>
+                <button id="pay_bills">Pay All Bills</button>
             </div>
-            <!-- TODO -->
+            <!-- Bills screen -->
 
             <!-- expanded item screen, within center container -->
             <div id="expand_screen">
@@ -316,9 +317,31 @@
             </div>
 
             <!--Rating Screen-->
-            <div id="rating_screen"> 
-
-            </div>    
+            <div id="rating_screen">
+                <h3>Select an item to rate:</h3>
+                <div id="generic_item" class="rating_item">
+                    <img class="rating_image" src="empty_glass.jpg">
+                    <h3>Generic Item</h3>
+                    <p class="rating_desc">An item that exists for the purpose of being rated by you.</p>
+                </div>
+            </div>
+            <div id="rating_screen_e">
+                <img class="food_img_e" src="empty_glass.jpg">
+                <h2>Generic Item</h2>
+                <p class="food_desc_e">It's really generic!</p>
+                <img id="star_1" class="rating_star" src="star-blank.png">
+                <img id="star_2" class="rating_star" src="star-blank.png">
+                <img id="star_3" class="rating_star" src="star-blank.png">
+                <img id="star_4" class="rating_star" src="star-blank.png">
+                <img id="star_5" class="rating_star" src="star-blank.png">
+                <button id="back_rating">< Back</button>
+                <p id="rating_question">How would you rate this item?</p>
+                <p id="comment_question">Do you have any additional comments?</p>
+                <form>
+                    <input type="text" id="comment_field">
+                </form>
+                <button id="send_rating">Submit Review</button>
+            </div>
             <!--Rating Screen-->
 			
 			<div id="not_implemented" class="confirm_window">

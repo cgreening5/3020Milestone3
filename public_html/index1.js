@@ -92,6 +92,8 @@ $(document).ready(function () {
     $("#submit_order").hide();
     $("#not_implemented").hide();
     $("#nav_port").hide();/* wasnt here originally */
+    $("#rating_screen").hide();
+    $("#rating_screen_e").hide();
 
     /*
      * Navigation Button Functions
@@ -564,8 +566,8 @@ $(document).ready(function () {
                 $(".ordered").hide();
                 itemCount = 0;
                 orderSubmitted = true;
-                updateButtons();
                 submitOrders();
+                updateButtons();
                 ;
             });
 
@@ -603,7 +605,7 @@ $(document).ready(function () {
             if (bill == null) {
                 bill = new LinkedList();
                 billHTML = getBillHTML(orderNo);
-                $("#bills_screen").append(billHTML);
+                $("#bill_wrapper").append(billHTML);
             } 
             else
                 billHTML = $("#bill" + orderNo);
@@ -621,7 +623,7 @@ $(document).ready(function () {
                     node = order.search(item);
                     var newNode = bill.add(item);
                     bill.setCount(newNode, node.count);
-                    billHTML.append(getBillItem(item, node.count));
+                    billHTML.append(getBillItem(item, node.count, orderNo));
                 }
 
                 //Otherwise, instead of adding a new element, replace it so that
@@ -631,8 +633,8 @@ $(document).ready(function () {
                     var temp = node.count;
                     bill.setCount(node, temp + order.search(item).count);
 
-                    $("#bill_item_name" + node.data.name.replace(/ /g, "_")).html(node.data.name + " (x" + node.count);
-                    $("#bill_item_price" + node.data.name.replace(/ /g, "_")).html(") ................$" + (item.price * node.count));
+                    $("#bill_item_name" + orderNo + node.data.name.replace(/ /g, "_")).html(node.data.name + " (x" + node.count);
+                    $("#bill_item_price" + orderNo + node.data.name.replace(/ /g, "_")).html(") ................$" + (item.price * node.count));
                 }
 
                 item = order.traverse();
@@ -657,21 +659,21 @@ $(document).ready(function () {
     }
 
     //Returns the HTML for a bill item.
-    function getBillItem(item, quantity)
+    function getBillItem(item, quantity, billNo)
     {
 
         var billItem = $("<div></div>");
         var name = $("<span></span>");
         var cost = $("<span></span>");
-        billItem.attr("id", "bill_item_" + item.name.replace(/ /g, "_"));
+        billItem.attr("id", "bill_item_" + billNo + item.name.replace(/ /g, "_"));
         billItem.attr("class", "bill_item");
 
-        name.attr("id", "bill_item_name" + item.name.replace(/ /g, "_"));
+        name.attr("id", "bill_item_name" + billNo + item.name.replace(/ /g, "_"));
         name.attr("class", "bill_item_name");
         name.append(item.name + " (x" + quantity);
         billItem.append(name);
 
-        cost.attr("id", "bill_item_price" + item.name.replace(/ /g, "_"));
+        cost.attr("id", "bill_item_price" + billNo + item.name.replace(/ /g, "_"));
         cost.attr("class", "bill_item_price");
         cost.append(") ................$" + (item.price * quantity));
 
@@ -689,12 +691,42 @@ $(document).ready(function () {
         else
             $("#order").css("background-color", disabled);
 
-        if (orderSubmitted)
-            $("#bills").css("background-color", regColor);
-        else
+        if (bill1 == null && bill2 == null && bill3 == null && bill4 == null)
+        {
             $("#bills").css("background-color", disabled);
+            $("#bills").attr("disabled", "disabled");
+        }
+        
+        else
+        {
+            $("#bills").css("background-color", regColor);
+            $("#bills").removeAttr("disabled");
+        }
     }
     ;
+    
+    //Removes the bills and the orders, calls fn to display feedback menu
+    $("#pay_bills").click(function () {
+        orderCount = 0;
+        itemCount = 0;
+        
+        firstOrder.clear();
+        secondOrder.clear();
+        thirdOrder.clear();
+        fourthOrder.clear();
+        
+        bill1 = null;
+        bill2 = null;
+        bill3 = null;
+        bill4 = null;
+        
+        $(".bill").remove();
+        $(".order_item").remove;
+        
+        updateButtons();
+        
+        show_rating_screen();
+    })
 
     //Takes the lastClick which is last clicked button, changes it to non hightlighted color, takes new clicked button and highlights it
     $.fn.clickHilite = function (lastClick) {
@@ -710,8 +742,6 @@ $(document).ready(function () {
         return lastClick;
     };
 
-
-
     //Takes the lastClick which is last clicked screen, hides it, takes new clicked screen and shows it
     $.fn.clickShow = function (lastClick) {
         if (lastClick != null) {
@@ -721,7 +751,7 @@ $(document).ready(function () {
         $(this).show();
         return lastClick;
     };
-
+    
     $("#mag_glass").click(function () {
         naviBtnDisable = true;
         orderBtnDisable = true;
@@ -737,10 +767,80 @@ $(document).ready(function () {
         orderBtnDisable = true;
         $("#not_implemented").show();
     });
+	$("#send_rating").click(function () {
+        naviBtnDisable = true;
+        orderBtnDisable = true;
+        $("#not_implemented").show();
+    });
     $("#not_imp_ret").click(function () {
         naviBtnDisable = false;
         orderBtnDisable = false;
         $("#not_implemented").hide();
     });
 
+
+    //Rating screen functions
+	$("#generic_item").click(function () {
+	    generic_item_rate();
+	});
+
+	function generic_item_rate() {
+	    prevPage = currPage;
+	    currPage = $("#rating_screen_e").clickShow(currPage);
+	};
+        
+	function show_rating_screen() { // CALL THIS FUNTION DURING THE CLICK EVEN OF WHATEVER BUTTON YOU WANT TO LEAD TO THE RATING SCREEN
+	    $("#center_container").css("top", "0%");
+	    $("#menu_port").hide();
+
+	    prevPage = currPage;
+	    currPage = $("#rating_screen").clickShow(currPage);
+	};
+
+	$("#back_rating").click(function () {
+	    $(currPage).hide();
+	    $(prevPage).show();
+	    currPage = prevPage;
+	    ;
+	});
+
+	$("#star_1").click(function () {
+	    $("#star_1").attr('src', 'star-color.png');
+	    $("#star_2").attr('src', 'star-blank.png');
+	    $("#star_3").attr('src', 'star-blank.png');
+	    $("#star_4").attr('src', 'star-blank.png');
+	    $("#star_5").attr('src', 'star-blank.png');
+	});
+
+	$("#star_2").click(function () {
+	    $("#star_1").attr('src', 'star-color.png');
+	    $("#star_2").attr('src', 'star-color.png');
+	    $("#star_3").attr('src', 'star-blank.png');
+	    $("#star_4").attr('src', 'star-blank.png');
+	    $("#star_5").attr('src', 'star-blank.png');
+	});
+
+	$("#star_3").click(function () {
+	    $("#star_1").attr('src', 'star-color.png');
+	    $("#star_2").attr('src', 'star-color.png');
+	    $("#star_3").attr('src', 'star-color.png');
+	    $("#star_4").attr('src', 'star-blank.png');
+	    $("#star_5").attr('src', 'star-blank.png');
+	});
+
+	$("#star_4").click(function () {
+	    $("#star_1").attr('src', 'star-color.png');
+	    $("#star_2").attr('src', 'star-color.png');
+	    $("#star_3").attr('src', 'star-color.png');
+	    $("#star_4").attr('src', 'star-color.png');
+	    $("#star_5").attr('src', 'star-blank.png');
+	});
+
+	$("#star_5").click(function () {
+	    $("#star_1").attr('src', 'star-color.png');
+	    $("#star_2").attr('src', 'star-color.png');
+	    $("#star_3").attr('src', 'star-color.png');
+	    $("#star_4").attr('src', 'star-color.png');
+	    $("#star_5").attr('src', 'star-color.png');
+	});
 });

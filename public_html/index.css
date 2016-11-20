@@ -649,14 +649,137 @@ h5{
 
 /* Bills screen items */
 
-#bills_screen{
+#pay_bills{
+    position:relative;
+    width: 200px;
+    height: 50px;
+    left: calc(50% - 100px);
+    font-size: 20px;
+}
+
+#bill_wrapper{
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
+    height: calc(100% - 50px);
     width: 100%;
 }
 
 .bill_item{
     padding-left: 15px;
+}
+
+
+/*Review screen items*/
+
+#rating_screen{
+    position: relative;
+	overflow: scroll;
+	border: 1px solid #000;
+	width: 100%;
+	height: 100%;
+}
+
+#generic_item {
+    top:50px;
+}
+
+.rating_item {
+    position: relative;
+	left:4%;
+	border:1px solid #000;
+	height:150px;
+	width:92%;
+}
+
+.rating_image {
+    position: absolute;
+	top: 12.5px;
+	left: 3%;
+	height:125px;
+	width:175px;
+	border:1px solid #000;
+}
+
+.rating_desc{
+    position: absolute;	
+	top:30px;
+	left:230px;
+	text-align: left;
+}
+
+#rating_screen_e{
+    position: relative;
+	overflow: scroll;
+	border: 1px solid #000;
+	width: 100%;
+	height: 100%;
+}
+
+#back_rating{
+    position: absolute;
+	top: 3%;
+	left: 3%;
+	height: 10%;
+	width: 30%;
+	font-size: 25px;
+}
+
+#star_1{
+    left:25%;
+}
+
+#star_2{
+    left:35%;
+}
+
+#star_3{
+    left:45%;
+}
+
+#star_4{
+    left:55%;
+}
+
+#star_5{
+    left:65%;
+}
+
+.rating_star{
+    position:absolute;
+    top:65%;
+    width:10%;
+    height:width;
+}
+
+#rating_question {
+    position:absolute;
+    top:55%;
+    left:26%;
+    font-size:27px;
+}
+
+#comment_question {
+    position:absolute;
+    top:90%;
+    left:5%;
+    font-size:24px;
+}
+
+#comment_field{
+    position:absolute;
+    left:5%;
+    top:100%;
+    width:90%;
+    height:150px;
+}
+
+#send_rating{
+    position:absolute;
+	height:10%;
+	width:40%;
+	font-size:22px;
+	top:130%;
+    left:25%;
+    margin:5%;
 }
