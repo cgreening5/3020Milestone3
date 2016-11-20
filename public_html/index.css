@@ -6,6 +6,7 @@
 	right: 30%;
 	width: 40%;
 	position: fixed;
+	font-size: 24px;
 
 }
 
@@ -15,6 +16,7 @@
 	right: 30%;
 	width: 40%;
 	position: fixed;
+	font-size: 24px;
 }
 
 #welcomeOne{
@@ -68,6 +70,10 @@
 	height: 100%;
 }
 
+#menu_screen p{
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+}
+
 /* bottom bar for navigation*/
 #nav_port {
 	position: fixed;
@@ -100,6 +106,10 @@
 	border: 1px solid #000;
 	width: 100%;
 	height: 100%;
+}
+
+#expand_screen p{
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 button {
@@ -272,6 +282,42 @@ h3 {
 	font-size: 28px;
 }
 
+#qtySelect {
+	position: absolute;
+	bottom: 35%;
+	right: 25%;
+	height: 5%;
+	width: 10%;
+	font-size: 20px;
+}
+
+#qtySelectMsg {
+	position: absolute;
+	bottom: 35%;
+	right: 15%;
+	height: 5%;
+	width: 20%;
+	font-size: 20px;
+}
+
+#orderSelect {
+	position: absolute;
+	bottom: 35%;
+	right: 5%;
+	height: 5%;
+	width: 10%;
+	font-size: 20px;
+}
+
+#orderSelectMsg {
+	position: absolute;
+	bottom: 35%;
+	right: -5%;
+	height: 5%;
+	width: 20%;
+	font-size: 20px;
+}
+
 .food_img_e {
 	position: absolute;
 	top: 16%;
@@ -308,7 +354,7 @@ h2 {
 
 .food_contain {
 	position: absolute;
-	top: 260px;
+	top: 265px;
 	left: 3%;
 	font-size: 20px;
 }
@@ -317,7 +363,7 @@ h2 {
 	height:40px;
 	width:175px;
 	position:absolute;
-	top:22%;
+	top:21%;
 	left:265px;
 }
 
@@ -336,13 +382,15 @@ h2 {
 	height:300px;
 	width:40%;
 	background-color: Ivory;
+	overflow: scroll;
 }
 
 .order_window h5{
 	position: absolute;
 	margin-top: 0;
 	top: 5px;
-	left: 40%;
+	left: 45%;
+	font-size: 16px;
 }
 
 #order_one {
@@ -358,6 +406,11 @@ h2 {
 #order_three {
 	top: 330px;
 	left: 5%;
+}
+
+#order_four {
+	top: 330px;
+	right: 5%;
 }
 
 .new_order_button {
@@ -378,14 +431,19 @@ h2 {
 	top:385px;
 	left: 20%;
 }
+#new_order_four {
+	top:385px;
+	right: 20%;
+}
 
 #submit_order {
 	position:absolute;
 	height:10%;
 	width:30%;
 	font-size:22px;
-	top:95%;
-	right:5%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	right:0;
 }
 
 .confirm_window {
@@ -416,9 +474,23 @@ h2 {
 	top: 110px;
 }
 
+#warning_ret {
+	position: absolute;
+	right: 35%;
+	top: 110px;
+}
+
+#order_warning p {
+	position: absolute;
+	right:43%;
+	margin-top:0px;
+	top:30px;
+	font-size:28px;
+}
+
 #order_confirm p {
 	position: absolute;
-	left:30%;
+	left:41%;
 	margin-top:0px;
 	top:30px;
 	font-size:28px;
@@ -479,11 +551,6 @@ h2 {
 
 /* Order screen items */
 
-.order_list
-{
-    list-style-type: none;
-}
-
 .order_list.h5{
     text-align: center;
 }
@@ -495,13 +562,13 @@ h2 {
 
 .order_item{
     margin-top: 15px;
+    padding-left: 15px;
     font: 12px helvetica;
     text-align: left;
-    margin-right: 
 }
 
 .delete_order_item{
-    height: 25px;
+    height: 20px;
     width: 30px;
     display: block;
     float: right;
@@ -509,18 +576,36 @@ h2 {
     margin-left: 30px;
 }
 
+ul.order_list {
+    max-width: 40em;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none
+}
 
-/* Bills screen items */
+ul.order_list li:before 
+{
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    content:
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+}
 
-#bills_screen{
-    position: relative;
-    display: flex;
-    height: 100%;
-    width: 100%;
+ul.order_list span:first-child {
+    padding-right: 0.33em;
+}
+
+ul.order_list span + span 
+{
+    float: right;
+    padding-left: 0.33em;
 }
 
 .bill{
-    position: absolute;
     height: 300px;
     width: 300px;
     border: 2px black solid;
@@ -530,3 +615,22 @@ h5{
     text-align: center;
 }
 
+
+/* Bills screen items */
+
+#bills_screen{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.bill{
+    margin: 10px;
+    background-color: ivory;
+}
+
+.bill_item{
+    padding-left: 15px;
+}

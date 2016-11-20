@@ -54,6 +54,7 @@ LinkedList.prototype.add = function (value) {
 LinkedList.prototype.search = function (data) {
     var currentNode = this.head;
     var found = false;
+	var count = 0;
     while (currentNode != null && !found) {
         if (data === currentNode.data) {
             found = true;
@@ -61,6 +62,7 @@ LinkedList.prototype.search = function (data) {
         else {
             currentNode = currentNode.next;
         }
+		count++;
     }
 
 
@@ -92,8 +94,14 @@ LinkedList.prototype.remove = function (data) {
     if (found) {
         if (prevNode == null) {
             this.head = this.head.next;
-        } else {
-            prevNode.next = currentNode.next;
+        } 
+		else {
+			if(this.last == currentNode) {
+				this.last = prevNode;
+				this.last.next = null;
+			}
+            else 
+				prevNode.next = currentNode.next;
         }
 
         this.size--;
@@ -109,11 +117,18 @@ LinkedList.prototype.isEmpty = function () {
 
 LinkedList.prototype.clear = function(){
     this.head = null;
+	this.last = null;
+	this.size = 0;
 }
 
 LinkedList.prototype.increment = function (node) {
     if (node != null)
         node.count++;
+};
+
+LinkedList.prototype.setCount = function (node, newCount) {
+    if (node != null)
+        node.count = newCount;
 };
 
 LinkedList.prototype.decrement = function (node) {

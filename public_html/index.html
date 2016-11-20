@@ -143,22 +143,22 @@
 
                 <div id= "order_one" class = "order_window">
                     <h5>Order 1</h5>
-                    <ol class= "order_list" id="order1_list"></ol>
+                    <ul class= "order_list" id="order1_list"></ul>
                 </div>
 
                 <div id= "order_two" class = "order_window">
                     <h5>Order 2</h5>
-                    <ol class= "order_list" id="order2_list"></ol>
+                    <ul class= "order_list" id="order2_list"></ul>
                 </div>
 
                 <div id= "order_three" class = "order_window">
                     <h5>Order 3</h5>
-                    <ol class= "order_list" id="order3_list"></ol>
+                    <ul class= "order_list" id="order3_list"></ul>
                 </div>
 
                 <div id= "order_four" class = "order_window">
                     <h5>Order 4</h5>
-                    <ol class= "order_list" id="order4_list"></ol>
+                    <ul class= "order_list" id="order4_list"></ul>
                 </div>
 
                 <button id= "new_order_two" class = "new_order_button">+</button>
@@ -172,10 +172,17 @@
                     <button id = "order_c_yes" class = "confirm_button">Confirm</button>
                     <button id = "order_c_no" class = "confirm_button">Cancel</button>
                 </div>
+				
+				<div id= "order_warning" class= "confirm_window"> 
+                    <p>Please order an item</p>
+					<button id = "warning_ret" class = "confirm_button">Return</button>
+                </div>
 
-                <button id= "submit_order">Submit Order</button>
+                
 
             </div>
+			
+			<button id= "submit_order">Submit Order</button>
             <!-- screen for orders, within center container -->
 
             <!-- order submitted screen, within center container -->
@@ -281,8 +288,29 @@
 
                 <div id="expand_buttons">
                     <button id="back">< Back</button>
-                    <button id="add_order">Add to Order</button>
-                </div>
+					
+					<p id="qtySelectMsg">Order how many?</p>
+					<p id="orderSelectMsg">Which order?</p>
+					
+					<select id="qtySelect" name="qtySelect">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+					</select>
+					
+					<select id="orderSelect" name="orderSelect">
+						<option value="New">New Order</option>
+					</select>
+						
+					<button onclick="getQty();getOrder();" id="add_order">Add to Order</button>
+				</div>
+
 
             </div>
 
