@@ -1,5 +1,19 @@
-$(document).ready(function () {
 
+	var currQty = 0; //current quantity selected in the expanded window
+	var currOrderSelect = null;
+	function getQty() {
+		var dropdown = document.getElementById("qtySelect");
+		var qty = parseInt(dropdown.options[dropdown.selectedIndex].value, 10);
+		currQty = qty;
+	}
+	function getOrder() {
+		var dropdown = document.getElementById("orderSelect");
+		var order = (dropdown.options[dropdown.selectedIndex].value);
+		currOrderSelect = order;
+	}
+$(document).ready(function () {
+	
+	var orderDropdown = $("#orderSelect");
     var lastNav = null;	//last navigation button clicked
     var lastMenu = $("#appetizer_button"); //last menu button clicked
     var regColor = "DarkSlateGray"; //regular non highlighted button color
@@ -30,6 +44,18 @@ $(document).ready(function () {
     
     var lemonPie = {name:"Lemon Pie", price:11};
     var shortcake = {name:"Shortcake", price:12};
+    
+    var map = new Object();
+    
+    map[baconShrimp.name] = $("#bacon_shrimp");
+    map[friedCalamari.name] = $("#fried_calamari");
+    map[chickenCrispers.name] = $("#crispers");
+    map[invisibleDrink.name] = $("#invis_drink");
+    map[redWine.name] = $("#wine");
+    map[ribEyeSteak.name] = $("#steak");
+    map[fishAndChips.name] = $("#fish_chips");
+    map[lemonPie.name] = $("#lemon_pie");
+    map[shortcake.name] = $("#shortcake");
 
     var firstOrder = new LinkedList(); //linked list of orders
     var secondOrder = new LinkedList();
@@ -37,11 +63,14 @@ $(document).ready(function () {
     var fourthOrder = new LinkedList();
     
     var bill1 = null;
+    
+    
 
     $(lastMenu).css("background-color", hilite);	//initial tab of menu is appetizers
 
     //hide everything except welcome screen and navigation buttons
     updateButtons();
+	
     $("#menu_screen").children().hide();
     $(".appetizers").show();
     $(".ordered").hide();
@@ -57,6 +86,8 @@ $(document).ready(function () {
     $("#expanded_window").children().hide();
     $("#expand_screen").hide();
     $("#order_submitted").hide();
+	$("#submit_order").hide();
+	$("#not_implemented").hide();
     $("#nav_port").hide();/* wasnt here originally */
 
     /*
@@ -81,18 +112,22 @@ $(document).ready(function () {
             lastNav = $("#menu").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#menu_screen").clickShow(currPage);
+			$("#submit_order").hide();
+			$("#center_container").css("bottom","26%");
         }
     });
 
     //highlights orders button clicked, hides previous navigation screen, shows the orders screen, needs at least one item ordered
     $("#order").click(function () {
         var order_panel = $("#order1");
-        if (orderCount > 0 && !naviBtnDisable) {
+        if (itemCount > 0 && !naviBtnDisable) {
             $("#center_container").css("top","0%");
             $("#menu_port").hide();
             lastNav = $("#order").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#orders_screen").clickShow(currPage);
+			$("#center_container").css("bottom","35%");
+			$("#submit_order").show();
         }
     });
 
@@ -105,8 +140,12 @@ $(document).ready(function () {
             $(currPage).hide();
             prevPage = currPage;
             currPage = $("#bills_screen").clickShow(currPage);
+			$("#submit_order").hide();
+			$("#center_container").css("bottom","26%");
         }
     });
+	
+
 
     //highlights most recently clicked menu buttons, shows current menu, hides previous menu
     $("#appetizer_button").click(function () {
@@ -133,6 +172,8 @@ $(document).ready(function () {
         currPage = $("#expand_screen").clickShow(currPage);
         currItem = friedCalamari;
         itemOrderNote = "#calamari_ordered";
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         ;
     });
     
@@ -141,6 +182,8 @@ $(document).ready(function () {
      */
 
     $("#crisper").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#crisper_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -151,6 +194,8 @@ $(document).ready(function () {
     });
 
     $("#bacon_shrimp").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#bacon_shrimp_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -161,6 +206,8 @@ $(document).ready(function () {
     });
 
     $("#invis_drink").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#invis_drink_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -171,6 +218,8 @@ $(document).ready(function () {
     });
 
     $("#wine").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#wine_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -181,6 +230,8 @@ $(document).ready(function () {
     });
 
     $("#steak").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#steak_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -191,6 +242,8 @@ $(document).ready(function () {
     });
 
     $("#fish_chips").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#fish_chips_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -201,6 +254,8 @@ $(document).ready(function () {
     });
 
     $("#lemon_pie").click(function () {
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         lastExpandScreen = $("#lemon_pie_e").clickShow(lastExpandScreen);
         $(currPage).hide();
         prevPage = currPage;
@@ -216,6 +271,8 @@ $(document).ready(function () {
         prevPage = currPage;
         currPage = $("#expand_screen").clickShow(currPage);
         currItem = shortcake;
+		$("#center_container").css("top","0%");
+		$("#menu_port").hide();
         itemOrderNote = "#shortcake_ordered";
         ;
     });
@@ -226,41 +283,125 @@ $(document).ready(function () {
         $("#expand_screen").hide();
         $(prevPage).show();
         currPage = prevPage;
+		$("#center_container").css("top","8%");
+		$("#menu_port").show();
         ;
     });
 
     //adds items to orders, current max is 8 different per order, if exceeded makes a new order automatically
     
+	
     $("#add_order").click(function () {
         var currOrder = null;
         var currList = null;
+		var order = 0;
+		
 
-        if (orderCount === 0) {
-            orderCount = 1;
-            updateButtons();
-            currOrder = firstOrder;
-            currList = $("#order1_list");
+        if (currOrderSelect === "New") {
+			
+            orderCount++;
+			order = orderCount;
+			$("#orderSelect option[value='New']").remove();
+			if(orderCount < 4) {
+				if(orderCount == 1) {
+					$(orderDropdown).append($('<option>', {
+						value: "Order 1",
+						text: 'Order 1'
+					}));
+				}
+				if(orderCount == 2) {
+					$(orderDropdown).append($('<option>', {
+						value: "Order 2",
+						text: 'Order 2'
+					}));
+					$("#new_order_two").hide();
+					$("#new_order_three").show();
+					$("#order_two").show();
+				}
+				if(orderCount == 3) {
+					$(orderDropdown).append($('<option>', {
+						value: "Order 3",
+						text: 'Order 3'
+					}));
+					$("#new_order_three").hide();
+					$("#new_order_four").show();
+					$("#order_three").show();
+				}
+				$(orderDropdown).append($('<option>', {
+					value: "New",
+					text: 'New Order'
+			}));
+			}
+			if(orderCount == 4) {
+				$(orderDropdown).append($('<option>', {
+					value: "Order 4",
+					text: 'Order 4'
+				}));
+				$("#new_order_four").hide();
+				$("#order_four").show();
+			}
+			
+			
+			
+			
         } 
         else {
-
-            currOrder = firstOrder;
-            currList = $("#order1_list");
+			if(currOrderSelect === "Order 1")
+				order = 1;
+			if(currOrderSelect === "Order 2")
+				order = 2;
+			if(currOrderSelect === "Order 3")
+				order = 3;
+			if(currOrderSelect === "Order 4")
+				order = 4;
         }
+		
 
-        var searchNode = currOrder.search(currItem);
+		if(order == 1) {
+			currOrder = firstOrder;
+            currList = $("#order1_list");
+		}
+		else if(order == 2) {
+			currOrder = secondOrder;
+            currList = $("#order2_list");
+		}
+		else if(order == 3) {
+			currOrder = thirdOrder;
+            currList = $("#order3_list");
+		}
+		else if(order == 4) {
+			currOrder = fourthOrder;
+            currList = $("#order4_list");
+		}
+		
+		var searchNode = currOrder.search(currItem);
+		
         if (searchNode == -1) {
-            currOrder.add(currItem);
+            var node = currOrder.add(currItem);
+			currOrder.setCount(node, currQty);
             itemCount++;
-            currList.append(getOrderItem(currItem, 1));
+            currList.append(getOrderItem(currItem, currQty));
+			
         } 
         else {
-            currOrder.increment(searchNode);
-            $("#" + currItem.name.replace(/ /g, "_")).html(getOrderItem(currItem, searchNode.count));
+			
+            currOrder.setCount(searchNode, (searchNode.count + currQty));
+			
+            $("#item_name_" + currItem.name.replace(/ /g, "_")).html(currItem.name + " (x" + searchNode.count + ")");
+			$("#item_price_" + currItem.name.replace(/ /g, "_")).html("$"+(currItem.price * searchNode.count));
+			
         }
-
+		
+		if(itemCount == 1) {
+			updateButtons();
+		}
+		
+		$("#qtySelect").val('1');
         $(itemOrderNote).show();
         $(currPage).hide();
         $(prevPage).show();
+		$("#center_container").css("top","8%");
+		$("#menu_port").show();
         currPage = prevPage;
     });
 
@@ -268,6 +409,9 @@ $(document).ready(function () {
         
         var orderItem = $("<div></div>");
         var deleteButton = $("<input></input>");
+        var name = $("<span></span>");
+        var cost = $("<span></span>");
+        
         deleteButton.attr("type", "image");
         deleteButton.attr("class", "delete_order_item");
         deleteButton.attr("src", "delete_button.svg");
@@ -275,8 +419,13 @@ $(document).ready(function () {
         orderItem.append(deleteButton);
         orderItem.attr("id", "order_item_" + item.name.replace(/ /g, "_"));
         orderItem.attr("class", "order_item");
-        orderItem.append(item.name + " (x" + quantity);
-        orderItem.append(") ................$" + (item.price * quantity));
+        
+		name.attr("id", "item_name_" + item.name.replace(/ /g, "_"));
+        name.append(item.name + " (x" + quantity + ")");
+        orderItem.append(name);
+		cost.attr("id", "item_price_" + item.name.replace(/ /g, "_"));
+        cost.append("$"+(item.price * quantity));
+        orderItem.append(cost);
         orderItem.append("</br>");
         
         orderItem.data("item", item);
@@ -284,16 +433,71 @@ $(document).ready(function () {
         return orderItem;
     }
     
-    $("#orders_screen").on("click", ".delete_order_item", function() { 
+    $("#order_one").on("click", ".delete_order_item", function() { 
         var div = $(this).closest("div");
-        var itemName = div.data("item").name;
-        firstOrder.remove(itemName);
-        div.fadeOut(300);
+        var item = div.data("item");
+        var menuitem;
+        firstOrder.remove(item);
+        menuitem = map[item.name];
+        menuitem.find(".ordered").hide();
+		itemCount--;	
+        div.fadeOut(250);
+		$(div).remove();
+		updateButtons();	
+    });
+	
+	$("#order_two").on("click", ".delete_order_item", function() { 
+        var div = $(this).closest("div");
+        var item = div.data("item");
+        var menuitem;
+        secondOrder.remove(item);
+        menuitem = map[item.name];
+        menuitem.find(".ordered").hide();
+		itemCount--;	
+        div.fadeOut(250);
+		$(div).remove();
+		updateButtons();
+    });
+	
+	$("#order_three").on("click", ".delete_order_item", function() { 
+        var div = $(this).closest("div");
+        var item = div.data("item");
+        var menuitem;
+        thirdOrder.remove(item);
+        menuitem = map[item.name];
+        menuitem.find(".ordered").hide();
+		itemCount--;	
+        div.fadeOut(250);
+		$(div).remove();
+		updateButtons();
+    });
+	
+	$("#order_four").on("click", ".delete_order_item", function() { 
+        var div = $(this).closest("div");
+        var item = div.data("item");
+        var menuitem;
+        fourthOrder.remove(item);
+        menuitem = map[item.name];
+        menuitem.find(".ordered").hide();
+		itemCount--;	
+        div.fadeOut(250);
+		$(div).remove();
+		updateButtons();
     });
 
     //make new orders as the buttons are clicked
     $("#new_order_two").click(function () {
         if (!orderBtnDisable) {
+			$("#orderSelect option[value='New']").remove();
+			$(orderDropdown).append($('<option>', {
+				value: "Order 2",
+				text: 'Order 2'
+			}));
+			$(orderDropdown).append($('<option>', {
+				value: "New",
+				text: 'New Order'
+			}));
+			
             orderCount = 2;
             $("#new_order_two").hide();
             $("#order_two").show();
@@ -304,16 +508,41 @@ $(document).ready(function () {
 
     $("#new_order_three").click(function () {
         if (!orderBtnDisable) {
+			$("#orderSelect option[value='New']").remove();
+			$(orderDropdown).append($('<option>', {
+				value: "Order 3",
+				text: 'Order 3'
+			}));
+			$(orderDropdown).append($('<option>', {
+				value: "New",
+				text: 'New Order'
+			}));
+			
             orderCount = 3;
             $("#new_order_three").hide();
             $("#order_three").show();
+			$("#new_order_four").show();
+        }
+        ;
+    });
+	
+	$("#new_order_four").click(function () {
+        if (!orderBtnDisable) {
+			$("#orderSelect option[value='New']").remove();
+			$(orderDropdown).append($('<option>', {
+				value: "Order 4",
+				text: 'Order 4'
+			}));
+            orderCount = 4;
+            $("#new_order_four").hide();
+            $("#order_four").show();
         }
         ;
     });
 
     //brings up confirmation screen that submits order, submitting order resets orders
     $("#submit_order").click(function () {
-        if (!orderBtnDisable) {
+        if (!orderBtnDisable && itemCount > 0) {
             naviBtnDisable = true;
             orderBtnDisable = true;
             $("#order_confirm").show();
@@ -327,18 +556,14 @@ $(document).ready(function () {
             $("#order_c_yes").click(function () {
                 naviBtnDisable = false;
                 orderBtnDisable = false;
-                $("#order_confirm").hide();
-                $("#order_two").hide();
-                $("#order_three").hide();
-                $("#order_four").hide();
-                $("#new_order_two").show();
-                $("#new_order_three").hide();
-                $("#new_order_four").hide();
                 currPage = $("#order_submitted").clickShow(currPage);
-
+				$("#order_confirm").hide();
+				$("#submit_order").hide();
+				$("#center_container").css("bottom","26%");
+                currPage = $("#order_submitted").clickShow(currPage);
+				
                 lastNav = null;
                 $(".ordered").hide();
-                orderCount = 0;
                 itemCount = 0;
                 orderSubmitted = true;
                 updateButtons();
@@ -347,12 +572,23 @@ $(document).ready(function () {
             });
 
         }
-        ;
+		else if(itemCount == 0) {
+			naviBtnDisable = true;
+            orderBtnDisable = true;
+			$("#order_warning").show();
+			$("#warning_ret").click(function () {
+                naviBtnDisable = false;
+                orderBtnDisable = false;
+                $("#order_warning").hide();
+            });
+			updateButtons();
+		};
+			
     });
 
    //Make new bills from orders
     function submitOrders(){
-        var billNode;
+        var node;
         var billHTML;
         var item;
         
@@ -371,15 +607,38 @@ $(document).ready(function () {
             item = firstOrder.traverse();
             while (item !== null)
             {
-                billNode = firstOrder.search(item);
-                bill1.add(item);
-                billHTML.append(getBillItem(item, billNode.count));
+                node = bill1.search(item);
+                
+                //If the item was not already in the bill, add it and add
+                //an HTML element
+                if (node == -1)
+                {
+                    node = firstOrder.search(item);
+                    var newNode = bill1.add(item);
+					bill1.setCount(newNode, node.count);
+                    billHTML.append(getBillItem(item, node.count));
+                }
+                
+                //Otherwise, instead of adding a new element, replace it so that
+                //it reflects the new count
+                else
+                {
+					var temp = node.count;
+                    bill1.setCount(node, temp + firstOrder.search(item).count);
+					
+                    $("#bill_item_name" + node.data.name.replace(/ /g, "_")).html(node.data.name + " (x" + node.count);
+					$("#bill_item_price" + node.data.name.replace(/ /g, "_")).html(") ................$" + (item.price * node.count));
+                }
+                
                 item = firstOrder.traverse();
             }
         }
 
         $(".order_item").remove();
         firstOrder.clear();
+		secondOrder.clear();
+		thirdOrder.clear();
+		fourthOrder.clear();
     };
    
     //Creates a "bill" HTML element with id bill[billno], ie. bill1, bill2, etc.
@@ -399,10 +658,21 @@ $(document).ready(function () {
     {
 
         var billItem = $("<div></div>");
-        billItem.attr("id", "bill_item_ " + item.name.replace(/ /g, "_"));
+		var name = $("<span></span>");
+        var cost = $("<span></span>");
+        billItem.attr("id", "bill_item_" + item.name.replace(/ /g, "_"));
         billItem.attr("class", "bill_item");
-        billItem.append(item.name + " (x" + quantity);
-        billItem.append(") ................$" + (item.price * quantity));
+		
+		name.attr("id", "bill_item_name" + item.name.replace(/ /g, "_"));
+		name.attr("class", "bill_item_name");
+        name.append(item.name + " (x" + quantity);
+		billItem.append(name);
+		
+		cost.attr("id", "bill_item_price" + item.name.replace(/ /g, "_"));
+		cost.attr("class", "bill_item_price");
+        cost.append(") ................$" + (item.price * quantity));
+		
+		billItem.append(cost);
         billItem.append("</br>");
         
         billItem.data("item", item);
@@ -411,7 +681,7 @@ $(document).ready(function () {
 
     //update order and bills button, see if they should be disabled or regular color
     function updateButtons() {
-        if (orderCount > 0)
+        if (itemCount > 0)
             $("#order").css("background-color", regColor);
         else
             $("#order").css("background-color", disabled);
@@ -428,6 +698,7 @@ $(document).ready(function () {
         if (lastClick != null) {
             $(lastClick).css("background-color", regColor);
         }
+		if(itemCount < 1) {updateButtons()};
         lastClick = this;
         $(this).css("background-color", hilite);
         return lastClick;
@@ -444,4 +715,26 @@ $(document).ready(function () {
         $(this).show();
         return lastClick;
     };
+	
+	$("#mag_glass").click(function () {
+        naviBtnDisable = true;
+        orderBtnDisable = true;
+		$("#not_implemented").show();
+    });
+	$("#help").click(function () {
+        naviBtnDisable = true;
+        orderBtnDisable = true;
+		$("#not_implemented").show();
+    });
+	$("#welcomeHelp").click(function () {
+        naviBtnDisable = true;
+        orderBtnDisable = true;
+		$("#not_implemented").show();
+    });
+	$("#not_imp_ret").click(function () {
+        naviBtnDisable = false;
+        orderBtnDisable = false;
+		$("#not_implemented").hide();
+    });
+	
 });
