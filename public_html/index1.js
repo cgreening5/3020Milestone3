@@ -67,7 +67,7 @@ $(document).ready(function () {
     var bill3 = null;
     var bill4 = null;
 
-
+    var ordersPaid = [false, false, false, false];
 
     $(lastMenu).css("background-color", hilite);	//initial tab of menu is appetizers
 
@@ -435,7 +435,7 @@ $(document).ready(function () {
 
     $("#order_one").on("click", ".delete_order_item", function () {
         var div = $(this).closest("div");
-        var item = div.data("item");
+        var item = div.data("item");f
         var menuitem;
         firstOrder.remove(item);
         menuitem = map[item.name];
@@ -605,6 +605,8 @@ $(document).ready(function () {
             if (bill == null) {
                 bill = new LinkedList();
                 billHTML = getBillHTML(orderNo);
+                billHTML.data("bill", bill);
+                billHTML.data("num", orderNo);
                 $("#bill_wrapper").append(billHTML);
             } 
             else
@@ -650,11 +652,16 @@ $(document).ready(function () {
     function getBillHTML(billno)
     {
         var div;
+        var payButton;
         var newBill = $("<div></div>");
         newBill.attr("id", "bill" + billno);
         newBill.attr("class", "bill");
         div = $("<h5>Bill " + billno + "</h5>");
         newBill.append(div);
+        payButton = $("<button></button");
+        payButton.attr("class", "pay_bill");
+        payButton.text("Pay this bill");
+        newBill.append(payButton);
         return newBill;
     }
 
@@ -704,6 +711,35 @@ $(document).ready(function () {
         }
     }
     ;
+    
+    $("#bills_screen").on("click", ".pay_bill", function (){
+        var bill = $(this).closest(".bill");
+		var orderNum = bill.data("num");
+        bill.data("bill").clear();
+        bill.css("border-color", disabled);
+        bill.find("h5").css("color", disabled);
+        bill.find(".bill_item").css("color", disabled);
+        ordersPaid[orderNum - 1] = true;
+		console.log(orderNum);
+		$("#orderSelect option[value='Order "+orderNum+"']").remove();
+		$("#order_"+orderNum+"_h").html("   Paid");
+		if(orderNum == 1 ) {
+			$("#order_one").css("background-color", disabled);
+		}
+		else if(orderNum == 2 ) {
+			$("#order_two").css("background-color", disabled);
+		}
+		else if(orderNum == 3 ) {
+			$("#order_three").css("background-color", hilite);
+		}
+		else if(orderNum == 4 ) {
+			$("#order_four").css("background-color", hilite);
+		};
+		
+        $(this).css("background-color", disabled);
+        $(this).attr("disabled", "disabled");
+		$(this).hide();
+    });
     
     //Removes the bills and the orders, calls fn to display feedback menu
     $("#pay_bills").click(function () {

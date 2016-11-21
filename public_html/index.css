@@ -636,6 +636,7 @@ ul.order_list span + span
 }
 
 .bill{
+    position: relative;
     margin: 10px;
     height: 300px;
     width: 300px;
@@ -649,20 +650,29 @@ h5{
 
 /* Bills screen items */
 
+#bill_wrapper{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    height: calc(100% - 50px);
+    width: 100%;
+}
+
+.pay_bill{
+    position: absolute;
+    height: 40px;
+    width: 160px;
+    left: 70px;
+    bottom: 10px;
+}
+
 #pay_bills{
     position:relative;
     width: 200px;
     height: 50px;
     left: calc(50% - 100px);
     font-size: 20px;
-}
-
-#bill_wrapper{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    height: calc(100% - 50px);
-    width: 100%;
 }
 
 .bill_item{
