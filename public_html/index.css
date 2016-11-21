@@ -793,3 +793,51 @@ h5{
     left:25%;
     margin:5%;
 }
+
+/* Modal */
+
+.modal{
+    position: fixed;
+    height: 300px;
+    width: 400px;
+    left: calc(50% - 200px);
+    top: calc(50% - 150px);
+    background-color: white;
+    border: 2pt black solid;
+}
+
+.modal_close{
+    display: block;
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+}
+
+.modal_ok{
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    right: 20px;
+    bottom: 10px;
+}
+
+.modal_cancel{
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    right: 140px;
+    bottom: 10px;
+}
+
+.modal_background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal_text{
+    position: absolute;
+    width: 300px;
+    top: 80px;
+    left: 50px;
+}

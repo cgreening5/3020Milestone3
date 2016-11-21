@@ -74,6 +74,8 @@ $(document).ready(function () {
     //hide everything except welcome screen and navigation buttons
     updateButtons();
 
+    $("#modal").hide();
+    $("#confirm_modal").hide();
     $("#menu_screen").children().hide();
     $(".appetizers").show();
     $(".ordered").hide();
@@ -435,7 +437,7 @@ $(document).ready(function () {
 
     $("#order_one").on("click", ".delete_order_item", function () {
         var div = $(this).closest("div");
-        var item = div.data("item");f
+        var item = div.data("item");
         var menuitem;
         firstOrder.remove(item);
         menuitem = map[item.name];
@@ -741,8 +743,79 @@ $(document).ready(function () {
 		$(this).hide();
     });
     
-    //Removes the bills and the orders, calls fn to display feedback menu
+    
     $("#pay_bills").click(function () {
+        var total = 0;
+        var item;
+        var text = "";
+        
+        if (bill1 != null)
+        {
+            bill1.initTraverse();
+            item = bill1.traverse();
+            
+            while (item != null){
+                total += item.price;
+                item = bill1.traverse();
+            }
+        }
+        
+        if (bill2 != null)
+        {
+            bill2.initTraverse();
+            item = bill2.traverse();
+            
+            while (item != null){
+                total += item.price;
+                item = bill2.traverse();
+            }
+        }
+
+        if (bill3 != null)
+        {
+            bill3.initTraverse();
+            item = bill3.traverse();
+            
+            while (item != null){
+                total += item.price;
+                item = bill3.traverse();
+            }
+        }
+        
+        if (bill4 != null)
+        {
+            bill4.initTraverse();
+            item = bill4.traverse();
+            
+            while (item != null){
+                total += item.price;
+                item = bill4.traverse();
+            }
+        }
+
+        text = "Your total is $" + total + ".00. Would you like a server to come toaccept payment?";
+        $("#modal_cancel").off();
+        $("#modal_cancel").on("click", function() {
+            $("#modal").fadeOut(100);
+        });
+
+        $("#modal_ok").off();
+        $("#modal_ok").on("click", function() {
+            $("#modal").fadeOut(100);
+            $("#confirm_text").text("Thank you for joining us. A server will be by shortly.");
+            $("#confirm_ok").off();
+            $("#confirm_ok").on("click", function(){
+                $("#confirm_modal").fadeOut(100);
+                payBills();
+            })
+            $("#confirm_modal").show();
+        });
+        
+        $("#modal_text").text(text);
+        $("#modal").show();
+    });
+    
+    function payBills() {
         orderCount = 0;
         itemCount = 0;
         
@@ -762,7 +835,7 @@ $(document).ready(function () {
         updateButtons();
         
         show_rating_screen();
-    })
+    }
 
     //Takes the lastClick which is last clicked button, changes it to non hightlighted color, takes new clicked button and highlights it
     $.fn.clickHilite = function (lastClick) {
