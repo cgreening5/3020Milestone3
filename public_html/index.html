@@ -41,8 +41,8 @@
 
             <div id="welcome">
                 <p id="welcomeOne">Welcome!</p>
-                <button id="welcomeBegin"><p id="beginP">Begin</p></button>
-                <button id="welcomeHelp"><p id="helpP">Request Employee</p></button>
+                <button id="welcomeBegin">Begin</button>
+                <button id="welcomeHelp">Request Employee</button>
             </div>
 
             <!-- screen for the menu, within the center container -->
@@ -55,8 +55,9 @@
                     <p class="food_desc">Savoury and tender calamari, lightly breaded and flash fried.</p>
                     <p class="food_price">$14</p>
                     <p id= "calamari_ordered" class="ordered">Ordered</p>
+                    <hr>
                 </div>
-
+                
                 <div id="crisper" class="appetizers" >
                     <img class="food_img" src="chicken-crisper.jpg">
                     <img class="stars" src="3stars.png">
@@ -64,8 +65,9 @@
                     <p class="food_desc">Fried chicken crispers, crunchy and juicy.</p>
                     <p class="food_price">$16</p>
                     <p id= "crisper_ordered" class="ordered">Ordered</p>
+                    <hr>
                 </div>
-
+                
                 <div id="bacon_shrimp" class="appetizers" >
                     <img class="food_img" src="bacon-shrimp.jpg">
                     <img class="stars" src="3stars.png">
@@ -74,9 +76,7 @@
                     <p class="food_price">$14</p>
                     <p id= "bacon_shrimp_ordered" class="ordered">Ordered</p>
                 </div>
-
-
-
+                
                 <div id="invis_drink" class="drinks" >
                     <img class="food_img" src="empty_glass.jpg">
                     <img class="stars" src="5stars.png">
@@ -84,6 +84,7 @@
                     <p class="food_desc">A completely invisible drink.</p>
                     <p class="food_price">$19</p>
                     <p id= "invis_drink_ordered" class="ordered">Ordered</p>
+                    <hr>
                 </div>
 
                 <div id="wine" class="drinks" >
@@ -101,16 +102,17 @@
                     <img class="food_img" src="rib-steak.jpg">
                     <img class="stars" src="4stars.png">
                     <h3>Rib-eye Steak</h3>
-                    <p class="food_desc">Rib-eye Steak</p>
+                    <p class="food_desc">Ravenous Rib-eye Steak</p>
                     <p class="food_price">$25</p>
                     <p id= "steak_ordered" class="ordered">Ordered</p>
+                    <hr>
                 </div>
 
                 <div id="fish_chips" class="entree" >
                     <img class="food_img" src="fish-chips.jpg">
                     <img class="stars" src="4stars.png">
                     <h3>Fish and Chips</h3>
-                    <p class="food_desc">Chips and Fish</p>
+                    <p class="food_desc">Battered and Fried Fish and Chips</p>
                     <p class="food_price">$22</p>
                     <p id= "fish_chips_ordered" class="ordered">Ordered</p>
                 </div>
@@ -121,16 +123,17 @@
                     <img class="food_img" src="lemon-pie.jpg">
                     <img class="stars" src="5stars.png">
                     <h3>Lemon Pie</h3>
-                    <p class="food_desc">Lemon Meringue Pie</p>
+                    <p class="food_desc">Lushous Lemon Meringue Pie</p>
                     <p class="food_price">$11</p>
                     <p id= "lemon_pie_ordered" class="ordered">Ordered</p>
+                    <hr>
                 </div>
 
                 <div id="shortcake" class="dessert" >
                     <img class="food_img" src="shortcake.jpg">
                     <img class="stars" src="3stars.png">
                     <h3>Shortcake</h3>
-                    <p class="food_desc">Strawberry Shortcake</p>
+                    <p class="food_desc">Succulent Strawberry Shortcake</p>
                     <p class="food_price">$12</p>
                     <p id= "shortcake_ordered" class="ordered">Ordered</p>
                 </div>
@@ -161,12 +164,16 @@
                     <ul class= "order_list" id="order4_list"></ul>
                 </div>
 
-                <button id= "new_order_two" class = "new_order_button">+</button>
-
-                <button id= "new_order_three" class = "new_order_button">+</button>
-
-                <button id= "new_order_four" class = "new_order_button">+</button>
-
+                <div id="new_order_button_container2" class="order_window">
+                    <button id= "new_order_two" class = "new_order_button">+</button>
+                </div>
+        
+                <div id="new_order_button_container3" class="order_window">
+                    <button id= "new_order_three" class = "new_order_button">+</button>
+                </div>
+                <div id="new_order_button_container4" class="order_window">
+                    <button id= "new_order_four" class = "new_order_button">+</button>
+                </div>
                 <div id= "order_confirm" class= "confirm_window"> 
                     <p>Submit your order?</p>
                     <button id = "order_c_yes" class = "confirm_button">Confirm</button>
@@ -178,7 +185,7 @@
 					<button id = "warning_ret" class = "confirm_button">Return</button>
                 </div>
 
-                
+                <div class="whitespace_pad"></div>
 
             </div>
 			
@@ -194,7 +201,9 @@
 
             <!-- Bills Screen - mostly generated using JQuery -->
             <div id= "bills_screen">
-                <div id="bill_wrapper"></div>
+                <div id="bill_wrapper">
+                    <div class="whitespace_pad" id="bill_whitespace"></div>
+                </div>
                 <button id="pay_bills">Pay All Bills</button>
             </div>
             <!-- Bills screen -->
@@ -245,7 +254,7 @@
                         <img class="food_img_e" src="Red_wine.jpg">
                         <img class="stars_e" src="3stars.png">
                         <h2>Red Wine</h2>
-                        <p class="food_desc_e">Fine red wine.</p>
+                        <p class="food_desc_e">Our house made red wine. The grapes were smashed in house.</p>
                         <p class="food_contain">Contains: red wine</p>
                         <p class="food_price_e">$18</p>
                     </div>
@@ -254,7 +263,7 @@
                         <img class="food_img_e" src="rib-steak.jpg">
                         <img class="stars_e" src="4stars.png">
                         <h2>Rib-eye Steak</h2>
-                        <p class="food_desc_e">Rib-eye Steak</p>
+                        <p class="food_desc_e">Steak from the 6-12 section of ribs, served with our barbecue sauce.</p>
                         <p class="food_contain">Contains: steak, ribs</p>
                         <p class="food_price_e">$25</p>
                     </div>
@@ -263,7 +272,7 @@
                         <img class="food_img_e" src="fish-chips.jpg">
                         <img class="stars_e" src="4stars.png">
                         <h2>Fish and Chips</h2>
-                        <p class="food_desc_e">Chips and Fish</p>
+                        <p class="food_desc_e">Juicy fried salmon with lemon sauce with crispy seasoned chips.</p>
                         <p class="food_contain">Contains: chips, fish, potatoes</p>
                         <p class="food_price_e">$22</p>
                     </div>
@@ -272,7 +281,7 @@
                         <img class="food_img_e" src="lemon-pie.jpg">
                         <img class="stars_e" src="5stars.png">
                         <h2>Lemon Pie</h2>
-                        <p class="food_desc_e">Lemon Meringue Pie</p>
+                        <p class="food_desc_e">Homemade custard made with real lemon, cooked to perfection.</p>
                         <p class="food_contain">Contains: lemon, bread, cream</p>
                         <p class="food_price_e">$11</p>
                     </div>
@@ -281,7 +290,7 @@
                         <img class="food_img_e" src="shortcake.jpg">
                         <img class="stars_e" src="3stars.png">
                         <h2>Shortcake</h2>
-                        <p class="food_desc_e">Strawberry Shortcake</p>
+                        <p class="food_desc_e">Moist cake, fresh strawberries and thick cream.</p>
                         <p class="food_contain">Contains: strawberry, short, cake</p>
                         <p class="food_price_e">$12</p>
                     </div>
@@ -352,16 +361,14 @@
         </div>
         <!-- center container -->
 
-        <div id="modal" class="modal">
-            <button id="modal_close" class="modal_close">x</button>
-            <p id="modal_text" class="modal_text">TEST TEXT</p>
+        <div id="modal" class="confirm_window">
+            <p id="modal_text" class="confirm_window">TEST TEXT</p>
             <button id="modal_cancel" class="modal_cancel">cancel</button>
             <button id="modal_ok" class="modal_ok">ok</button>
         </div>
         
-        <div id="confirm_modal" class="modal">
-            <button id="confirm_close" class="modal_close">x</button>
-            <p id="confirm_text" class="modal_text">TEST TEXT</p>
+        <div id="confirm_modal" class="confirm_window">
+            <p id="confirm_text" class="confirm_window">TEST TEXT</p>
             <button id="confirm_ok" class="modal_ok">ok</button>
         </div>
 

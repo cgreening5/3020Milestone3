@@ -46,16 +46,17 @@ $(document).ready(function () {
     var shortcake = {name: "Shortcake", price: 12};
 
     var map = new Object();
+	
+	map[baconShrimp.name] = $("#bacon_shrimp");
+	map[friedCalamari.name] = $("#fried_calamari");
+	map[chickenCrispers.name] = $("#crispers");
+	map[invisibleDrink.name] = $("#invis_drink");
+	map[redWine.name] = $("#wine");
+	map[ribEyeSteak.name] = $("#steak");
+	map[fishAndChips.name] = $("#fish_chips");
+	map[lemonPie.name] = $("#lemon_pie");
+	map[shortcake.name] = $("#shortcake");
 
-    map[baconShrimp.name] = $("#bacon_shrimp");
-    map[friedCalamari.name] = $("#fried_calamari");
-    map[chickenCrispers.name] = $("#crispers");
-    map[invisibleDrink.name] = $("#invis_drink");
-    map[redWine.name] = $("#wine");
-    map[ribEyeSteak.name] = $("#steak");
-    map[fishAndChips.name] = $("#fish_chips");
-    map[lemonPie.name] = $("#lemon_pie");
-    map[shortcake.name] = $("#shortcake");
 
     var firstOrder = new LinkedList(); //linked list of orders
     var secondOrder = new LinkedList();
@@ -84,7 +85,9 @@ $(document).ready(function () {
     $("#menu_screen").hide();
     $("#orders_screen").children().hide();
     $("#order_one").show();
+    $("#new_order_button_container2").show();
     $("#new_order_two").show();
+    $(".whitespace_pad").show();
     $("#submit_order").show();
     $("#orders_screen").hide();
     $("#bills_screen").hide();
@@ -115,12 +118,12 @@ $(document).ready(function () {
     $("#menu").click(function () {
         if (!naviBtnDisable) {
             $("#menu_port").show();
-            $("#center_container").css("top", "8%");
+            $("#center_container").css("top", "0px");
             lastNav = $("#menu").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#menu_screen").clickShow(currPage);
             $("#submit_order").hide();
-            $("#center_container").css("bottom", "26%");
+            $("#center_container").css("bottom", "130px");
         }
     });
 
@@ -133,7 +136,6 @@ $(document).ready(function () {
             lastNav = $("#order").clickHilite(lastNav);
             prevPage = currPage;
             currPage = $("#orders_screen").clickShow(currPage);
-            $("#center_container").css("bottom", "35%");
             $("#submit_order").show();
         }
     });
@@ -148,7 +150,7 @@ $(document).ready(function () {
             prevPage = currPage;
             currPage = $("#bills_screen").clickShow(currPage);
             $("#submit_order").hide();
-            $("#center_container").css("bottom", "26%");
+            $("#center_container").css("bottom", "130px");
         }
     });
 
@@ -321,18 +323,20 @@ $(document).ready(function () {
                         value: "Order 2",
                         text: 'Order 2'
                     }));
-                    $("#new_order_two").hide();
+                    $("#new_order_button_container2").hide();
+                    $("#new_order_button_container3").show();
                     $("#new_order_three").show();
-                    $("#order_two").show();
+                    $("#order_two").show()
                 }
                 if (orderCount == 3) {
                     $(orderDropdown).append($('<option>', {
                         value: "Order 3",
                         text: 'Order 3'
                     }));
-                    $("#new_order_three").hide();
+                    $("#new_order_button_container3").hide();
+                    $("#new_order_button_container4").show();
                     $("#new_order_four").show();
-                    $("#order_three").show();
+                    $("#order_three").show()
                 }
                 $(orderDropdown).append($('<option>', {
                     value: "New",
@@ -344,7 +348,7 @@ $(document).ready(function () {
                     value: "Order 4",
                     text: 'Order 4'
                 }));
-                $("#new_order_four").hide();
+                $("#new_order_button_container4").hide();
                 $("#order_four").show();
             }
 
@@ -423,9 +427,11 @@ $(document).ready(function () {
         orderItem.attr("class", "order_item");
 
         name.attr("id", "item_name_" + item.name.replace(/ /g, "_"));
+        name.attr("class", "order_item_name")
         name.append(item.name + " (x" + quantity + ")");
         orderItem.append(name);
         cost.attr("id", "item_price_" + item.name.replace(/ /g, "_"));
+        cost.attr("class", "item_price");
         cost.append("$" + (item.price * quantity));
         orderItem.append(cost);
         orderItem.append("</br>");
@@ -440,8 +446,11 @@ $(document).ready(function () {
         var item = div.data("item");
         var menuitem;
         firstOrder.remove(item);
-        menuitem = map[item.name];
-        menuitem.find(".ordered").hide();
+
+		if(secondOrder.search(item) == -1 && thirdOrder.search(item) == -1 && fourthOrder.search(item) == -1) {
+			menuitem = map[item.name];
+			menuitem.find(".ordered").hide();
+		}
         itemCount--;
         div.fadeOut(250);
         $(div).remove();
@@ -453,8 +462,11 @@ $(document).ready(function () {
         var item = div.data("item");
         var menuitem;
         secondOrder.remove(item);
-        menuitem = map[item.name];
-        menuitem.find(".ordered").hide();
+		
+        if(firstOrder.search(item) == -1 && thirdOrder.search(item) == -1 && fourthOrder.search(item) == -1) {
+			menuitem = map[item.name];
+			menuitem.find(".ordered").hide();
+		}
         itemCount--;
         div.fadeOut(250);
         $(div).remove();
@@ -466,8 +478,11 @@ $(document).ready(function () {
         var item = div.data("item");
         var menuitem;
         thirdOrder.remove(item);
-        menuitem = map[item.name];
-        menuitem.find(".ordered").hide();
+        
+		if(secondOrder.search(item) == -1 && firstOrder.search(item) == -1 && fourthOrder.search(item) == -1) {
+			menuitem = map[item.name];
+			menuitem.find(".ordered").hide();
+		}
         itemCount--;
         div.fadeOut(250);
         $(div).remove();
@@ -479,8 +494,11 @@ $(document).ready(function () {
         var item = div.data("item");
         var menuitem;
         fourthOrder.remove(item);
-        menuitem = map[item.name];
-        menuitem.find(".ordered").hide();
+        
+		if(secondOrder.search(item) == -1 && thirdOrder.search(item) == -1 && firstOrder.search(item) == -1) {
+			menuitem = map[item.name];
+			menuitem.find(".ordered").hide();
+		}
         itemCount--;
         div.fadeOut(250);
         $(div).remove();
@@ -501,8 +519,10 @@ $(document).ready(function () {
             }));
 
             orderCount = 2;
-            $("#new_order_two").hide();
+            
+            $("#new_order_button_container2").hide();
             $("#order_two").show();
+            $("#new_order_button_container3").show();
             $("#new_order_three").show();
         }
         ;
@@ -521,8 +541,9 @@ $(document).ready(function () {
             }));
 
             orderCount = 3;
-            $("#new_order_three").hide();
+            $("#new_order_button_container3").hide();
             $("#order_three").show();
+            $("#new_order_button_container4").show();
             $("#new_order_four").show();
         }
         ;
@@ -536,7 +557,7 @@ $(document).ready(function () {
                 text: 'Order 4'
             }));
             orderCount = 4;
-            $("#new_order_four").hide();
+            $("#new_order_button_container4").hide();
             $("#order_four").show();
         }
         ;
@@ -561,7 +582,7 @@ $(document).ready(function () {
                 currPage = $("#order_submitted").clickShow(currPage);
                 $("#order_confirm").hide();
                 $("#submit_order").hide();
-                $("#center_container").css("bottom", "26%");
+                $("#center_container").css("bottom", "130px");
                 currPage = $("#order_submitted").clickShow(currPage);
 
                 lastNav = null;
@@ -609,7 +630,7 @@ $(document).ready(function () {
                 billHTML = getBillHTML(orderNo);
                 billHTML.data("bill", bill);
                 billHTML.data("num", orderNo);
-                $("#bill_wrapper").append(billHTML);
+                billHTML.insertBefore($("#bill_whitespace"));
             } 
             else
                 billHTML = $("#bill" + orderNo);
@@ -637,8 +658,8 @@ $(document).ready(function () {
                     var temp = node.count;
                     bill.setCount(node, temp + order.search(item).count);
 
-                    $("#bill_item_name" + orderNo + node.data.name.replace(/ /g, "_")).html(node.data.name + " (x" + node.count);
-                    $("#bill_item_price" + orderNo + node.data.name.replace(/ /g, "_")).html(") ................$" + (item.price * node.count));
+                    $("#bill_item_name" + orderNo + node.data.name.replace(/ /g, "_")).html(node.data.name + " (x" + node.count + ")");
+                    $("#bill_item_price" + orderNo + node.data.name.replace(/ /g, "_")).html((item.price * node.count));
                 }
 
                 item = order.traverse();
@@ -679,12 +700,12 @@ $(document).ready(function () {
 
         name.attr("id", "bill_item_name" + billNo + item.name.replace(/ /g, "_"));
         name.attr("class", "bill_item_name");
-        name.append(item.name + " (x" + quantity);
+        name.append(item.name + " (x" + quantity  + ")");
         billItem.append(name);
 
         cost.attr("id", "bill_item_price" + billNo + item.name.replace(/ /g, "_"));
         cost.attr("class", "bill_item_price");
-        cost.append(") ................$" + (item.price * quantity));
+        cost.append((item.price * quantity));
 
         billItem.append(cost);
         billItem.append("</br>");
@@ -715,34 +736,83 @@ $(document).ready(function () {
     ;
     
     $("#bills_screen").on("click", ".pay_bill", function (){
-        var bill = $(this).closest(".bill");
-		var orderNum = bill.data("num");
+        var billHTML = $(this).closest(".bill");
+        var bill = billHTML.data("bill");
+        var orderNum = billHTML.data("num");
+            
+        bill.initTraverse();
+        var item = bill.traverse();
+        var total = 0;
+        var text;
+            
+        while (item != null)
+        {
+			
+            total += (item.price *bill.search(item).count);
+            item = bill.traverse();
+        }
+
+        text = "Your total is $" + total + ".00. Would you like a server to come to accept payment?";
+        $("#modal_cancel").off();
+        $("#modal_cancel").on("click", function() {
+            $("#modal").fadeOut(100);
+        });
+        
+        $("#modal_ok").off();
+        $("#modal_ok").on("click", function() {
+            $("#modal").fadeOut(100);
+            $("#confirm_text").text("Thank you for joining us. A server will be by shortly.");
+            $("#confirm_ok").off();
+            $("#confirm_ok").on("click", function(){
+                $("#confirm_modal").fadeOut(100);
+                payBill(billHTML);
+            })
+    
+            $("#confirm_modal").show();
+        });
+        $("#modal_text").text(text);
+        $("#modal").show();
+    });
+    
+    function payBill(bill) {
+
+        var orderNum = bill.data("num");
         bill.data("bill").clear();
         bill.css("border-color", disabled);
         bill.find("h5").css("color", disabled);
         bill.find(".bill_item").css("color", disabled);
         ordersPaid[orderNum - 1] = true;
-		console.log(orderNum);
-		$("#orderSelect option[value='Order "+orderNum+"']").remove();
-		$("#order_"+orderNum+"_h").html("   Paid");
-		if(orderNum == 1 ) {
-			$("#order_one").css("background-color", disabled);
+        
+        $("#orderSelect option[value='Order " + orderNum + "']").remove();
+        $("#order_" + orderNum + "_h").html("   Paid");
+        
+        if (orderNum == 1) {
+            $("#order_one").css("background-color", disabled);
+        }
+        
+        else if (orderNum == 2) {
+            $("#order_two").css("background-color", disabled);
+        }
+        
+        else if (orderNum == 3) {
+            $("#order_three").css("background-color", disabled);
+        }
+        
+        else if (orderNum == 4) {
+            $("#order_four").css("background-color", disabled);
+        }
+        ;
+
+        bill.find(".pay_bill").hide();
+        
+        if ((ordersPaid[0] || bill1 == null)
+            && (ordersPaid[1] || bill2 == null)
+            && (ordersPaid[2] || bill3 == null)
+            && (ordersPaid[3] || bill4 == null)) {
+            show_rating_screen();
+			$("#nav_port").hide();
 		}
-		else if(orderNum == 2 ) {
-			$("#order_two").css("background-color", disabled);
-		}
-		else if(orderNum == 3 ) {
-			$("#order_three").css("background-color", hilite);
-		}
-		else if(orderNum == 4 ) {
-			$("#order_four").css("background-color", hilite);
-		};
-		
-        $(this).css("background-color", disabled);
-        $(this).attr("disabled", "disabled");
-		$(this).hide();
-    });
-    
+    };
     
     $("#pay_bills").click(function () {
         var total = 0;
@@ -755,7 +825,7 @@ $(document).ready(function () {
             item = bill1.traverse();
             
             while (item != null){
-                total += item.price;
+                total += (item.price *bill1.search(item).count);
                 item = bill1.traverse();
             }
         }
@@ -766,7 +836,7 @@ $(document).ready(function () {
             item = bill2.traverse();
             
             while (item != null){
-                total += item.price;
+                total += (item.price *bill2.search(item).count);
                 item = bill2.traverse();
             }
         }
@@ -777,7 +847,7 @@ $(document).ready(function () {
             item = bill3.traverse();
             
             while (item != null){
-                total += item.price;
+                total += (item.price *bill3.search(item).count);
                 item = bill3.traverse();
             }
         }
@@ -788,12 +858,12 @@ $(document).ready(function () {
             item = bill4.traverse();
             
             while (item != null){
-                total += item.price;
+                total += (item.price *bill4.search(item).count);
                 item = bill4.traverse();
             }
         }
 
-        text = "Your total is $" + total + ".00. Would you like a server to come toaccept payment?";
+        text = "Your total is $" + total + ".00. Would you like a server to come to accept payment?";
         $("#modal_cancel").off();
         $("#modal_cancel").on("click", function() {
             $("#modal").fadeOut(100);
@@ -835,6 +905,7 @@ $(document).ready(function () {
         updateButtons();
         
         show_rating_screen();
+		$("#nav_port").hide();
     }
 
     //Takes the lastClick which is last clicked button, changes it to non hightlighted color, takes new clicked button and highlights it
@@ -900,6 +971,7 @@ $(document).ready(function () {
         
 	function show_rating_screen() { // CALL THIS FUNTION DURING THE CLICK EVEN OF WHATEVER BUTTON YOU WANT TO LEAD TO THE RATING SCREEN
 	    $("#center_container").css("top", "0%");
+		$("#center_container").css("bottom", "0%");
 	    $("#menu_port").hide();
 
 	    prevPage = currPage;

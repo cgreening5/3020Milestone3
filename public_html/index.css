@@ -1,581 +1,529 @@
 /* TODO: fix text scaling */
 
 #welcomeBegin {
-	top: 25%;
-	left:30%;
-	right: 30%;
-	width: 40%;
-	position: fixed;
-	font-size: 24px;
-
+    position: absolute;
+    top: calc(40% + 10px);
+    left: calc(50% - 200px);
+    height: 40px;
+    width: 400px;
+    font-size: 24px;
 }
 
 #welcomeHelp {
-	top: 50%;
-	left:30%;
-	right: 30%;
-	width: 40%;
-	position: fixed;
-	font-size: 24px;
+    position: absolute;
+    top: calc(40% + 60px);
+    left: calc(50% - 200px);
+    height: 40px;
+    width: 400px;
+    font-size: 24px;
 }
 
 #welcomeOne{
-	position: relative;
-	top:0%;
-	text-align: center;
-	font-size: 35px;
+    position: absolute;
+    left: calc(50% - 80px);
+    top: calc(40% - 80px);
+    text-align: center;
+    font-size: 35px;
+    font-family: Georgia, Palatino;
+    font-style: italic;
 }
 
 /* top bar for menu navigation */
 #menu_port {
-	position: fixed;
-	top:0%;
-	background-color: Linen;
-	left:0%;
-	width:100%;
-	height:7%;
-	border:1px solid #000;
-	z-index: 3;
+    position: fixed;
+    top:0%;
+    background-color: Linen;
+    left:0%;
+    width:100%;
+    height: 60px;
+    z-index: 3;
 }
 
-#menu_buttons button {
-	top:1%;
-	position: relative;
-	height:100%;
-	width: 100%;
-}
-/* change size of text "MENU_PORT" && "NAVIGATION" depending on screen size */
-/* this is just broad for now */
-@media only screen and (max-width: 550px){ #menu_buttons button, #navigation button { font-size: 90%;}}
-@media only screen and (max-width: 400px){ #menu_buttons button, #navigation button { font-size: 80%;}}
-@media only screen and (max-width: 360px){ #menu_buttons button, #navigation button { font-size: 65%;}}
-@media only screen and (max-width: 300px){ #menu_buttons button, #navigation button { font-size: 50%;}}
-@media only screen and (max-width: 250px){ #menu_buttons button, #navigation button { font-size: 30%;}}
-@media only screen and (max-width: 200px){ #menu_buttons button, #navigation button { font-size: 20%;}}
-@media only screen and (max-width: 150px){ #menu_buttons button, #navigation button { font-size: 10%;}}
-/* center container element: everything happens inside */
 #center_container {
-	position: fixed;
-	top: 8%;
-	left: 1%;
-	right: 1%;
-	bottom: 26%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 130px;
 }
 
 #menu_screen {
-	position: relative;
-	overflow: scroll;
-	border: 1px solid #000;
-	width: 100%;
-	height: 100%;
+    position: relative;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
 }
 
 #menu_screen p{
-	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 /* bottom bar for navigation*/
 #nav_port {
-	position: fixed;
-	top:75%;
-	background-color: Linen;
-	left:0%;
-	width:100%;
-	height:25%;
-	border:1px solid #000;
-	z-index: 3;
+    position: fixed;
+    bottom: 0;
+    background-color: Linen;
+    left:0%;
+    width:100%;
+    height:130px;
+    z-index: 3;
 }
 
 #navigation button{
-	position: fixed;
-	height:9%;
-	width: 33%;
+    font-size: 20px;
+    position: fixed;
+    height:50px;
+    width: 200px;
 }
 
 #orders_screen {
-	position: relative;
-	overflow: scroll;
-	border: 1px solid #000;
-	width: 100%;
-	height: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
 }
 
 #expand_screen {
-	position: relative;
-	overflow: scroll;
-	border: 1px solid #000;
-	width: 100%;
-	height: 100%;
+    position: relative;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
 }
 
 #expand_screen p{
-	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 button {
-	background-color:DarkSlateGray;
-	border-color:Black;
-	color:white;
-	font-family: Impact, Charcoal, sans-serif;
+    height: 40px;
+    background-color:DarkSlateGray;
+    color:white;
+    font-family: Charcoal, sans-serif;
 }
 
 
 
 #screen {
-	position:fixed;
-	left: 0%;
-	top: 0%;
-	height: 100%;
-	width:100%;
-	border:1px solid #000;
+    position:fixed;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width:100%;
 }
 
 #menu_buttons button {
-	top:1%;
-	position: fixed;
-	height:5%;
-	width: 20%;
+    font-size: 20px;
+    top:10px;
+    width: 20%;
+    position: fixed;
 }
-	
+
 #appetizer_button {
-	left:4%;
-	font-size: 20px;	
+    left:4%;	
 }
 
 #drinks_button { 
-	left:28%;
-	font-size: 20px;
+    left:28%;
+    font-size: 20px;
 }
 
 #entree_button { 
-	left:52%;
-	font-size: 20px;
+    left:52%;
+    font-size: 20px;
 }
 
 #dessert_button { 
-	left:76%;
-	font-size: 20px;
+    left:76%;
+    font-size: 20px;
 }
 
 #menu {
-	top:77%;
-	left:4%;
-	font-size: 24px;
+    bottom: 70px;
+    left: calc(50% - 255px);
+    font-size: 24px;
 }
 
 #help {
-	top:89%;
-	left:4%;
-	font-size: 20px;
+    bottom: 10px;
+    height: 50px;
+    left: calc(50% - 255px);
+    font-size: 20px;
 }
 
 #order {
-	top:77%;
-	left:41%;
-	font-size: 22px;
+    bottom: 70px;
+    left: calc(50% - 45px);
+    font-size: 22px;
 }
 
 #bills {
-	top:89%;
-	left:41%;
-	font-size: 24px;
+    bottom: 10px;
+    left: calc(50% - 45px);
+    font-size: 24px;
 }
 
 #mag_glass {
     position: fixed;
-    bottom: 1%;
-    right:2%;
-    height:20%;
-    width:20%;
-    max-width:150px;
+    bottom: 20px;
+    left: calc(50% + 165px);
+    height: 90px;
+    width:90px;
+    border: 2pt solid;
+    border-top: grey;
+    border-left:grey;
 }
 
 .appetizers {
-	position: relative;
-	left:4%;
-	border:1px solid #000;
-	height:150px;
-	width:92%;
+    position: relative;
+    left:4%;
+    height:150px;
+    width:92%;
 }
 
 .drinks {
-	position: relative;
-	left:4%;
-	border:1px solid #000;
-	height:150px;
-	width:92%;
+    position: relative;
+    left:4%;
+    height:150px;
+    width:92%;
 }
 
 .entree {
-	position: relative;
-	left:4%;
-	border:1px solid #000;
-	height:150px;
-	width:92%;
+    position: relative;
+    left:4%;
+    height:150px;
+    width:92%;
 }
 
 .dessert {
-	position: relative;
-	left:4%;
-	border:1px solid #000;
-	height:150px;
-	width:92%;
+    position: relative;
+    left:4%;
+    height:150px;
+    width:92%;
 }
 
 .food_img {
-	position: absolute;
-	top: 12.5px;
-	left: 3%;
-	height:125px;
-	width:175px;
-	border:1px solid #000;
+    position: absolute;
+    top: 12.5px;
+    left: 3%;
+    height:125px;
+    width:175px;
 }
 
 h3 {
-	margin-top: 0;
-	position: absolute;	
-	top:10px;
-	left:230px;
-	text-align: left;
+    margin-top: 0;
+    position: absolute;	
+    top:10px;
+    left:230px;
+    text-align: left;
 }
 
 
 .food_desc {
-	position: absolute;	
-	top:40px;
-	left:230px;
-	text-align: left;
+    position: absolute;	
+    top:40px;
+    left:230px;
+    text-align: left;
 }
 
 .food_price {
-	margin-top: 0;
-	position: absolute;	
-	top:10px;
-	right:2%;
-	text-align: right;
-	font-size: 20px;
+    margin-top: 0;
+    position: absolute;	
+    top:10px;
+    right:2%;
+    text-align: right;
+    font-size: 20px;
 }
 
 .stars {
-	height:25px;
-	width:110px;
-	position:absolute;
-	left:225px;
-	top:30px;
+    height:25px;
+    width:110px;
+    position:absolute;
+    left:225px;
+    top:30px;
 }
 
 #back {
-	position: absolute;
-	top: 3%;
-	left: 3%;
-	height: 10%;
-	width: 30%;
-	font-size: 25px;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    height: 10%;
+    width: 30%;
+    font-size: 25px;
 }
 
 #add_order {
-	position: absolute;
-	bottom: 5%;
-	right: 5%;
-	height: 10%;
-	width: 30%;
-	font-size: 28px;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    height: 10%;
+    width: 30%;
+    font-size: 25px;
 }
 
-
 #qtySelect {
-	position: absolute;
-	bottom: 35%;
-	right: 25%;
-	height: 5%;
-	width: 10%;
-	font-size: 20px;
+    position: absolute;
+    bottom: 35%;
+    right: 200px;
+    height: 5%;
+    width: 60px;
+    font-size: 20px;
 }
 
 #qtySelectMsg {
-	position: absolute;
-	bottom: 35%;
-	right: 15%;
-	height: 5%;
-	width: 20%;
-	font-size: 20px;
+    position: absolute;
+    bottom: calc(35% + 10px);
+    right: 50px;
+    height: 5%;
+    width: 300px;
+    font-size: 20px;
 }
 
 #orderSelect {
-	position: absolute;
-	bottom: 35%;
-	right: 5%;
-	height: 5%;
-	width: 10%;
-	font-size: 20px;
+    position: absolute;
+    bottom: 35%;
+    right: 5px;
+    height: 5%;
+    width: 150px;
+    font-size: 20px;
 }
 
 #orderSelectMsg {
-	position: absolute;
-	bottom: 35%;
-	right: -5%;
-	height: 5%;
-	width: 20%;
-	font-size: 20px;
+    position: absolute;
+    bottom: calc(35% + 10px);
+    right: 5px;
+    height: 5%;
+    width: 120px;
+    font-size: 20px;
 }
 
 .food_img_e {
-	position: absolute;
-	top: 16%;
-	left: 3%;
-	height:185px;
-	width:245px;
-	border:1px solid #000;
+    position: absolute;
+    top: 16%;
+    left: 3%;
+    height:185px;
+    width:245px;
 }
 
 h2 {
-	margin-top: 0;
-	position: absolute;	
-	top:16%;
-	left:305px;
-	text-align: left;
+    margin-top: 0;
+    position: absolute;	
+    top:16%;
+    left:305px;
+    text-align: left;
 }
 
 .food_desc_e {
-	position: absolute;	
-	top:26%;
-	left:305px;
-	text-align: left;
-	font-size: 18px;
+    position: absolute;	
+    top:26%;
+    left:305px;
+    text-align: left;
+    font-size: 18px;
 }
 
 .food_price_e {
-	margin-top: 0;
-	position: absolute;	
-	top:16%;
-	right:3%;
-	text-align: right;
-	font-size: 24px;
+    margin-top: 0;
+    position: absolute;	
+    top:16%;
+    right:3%;
+    text-align: right;
+    font-size: 24px;
 }
 
 .food_contain {
-	position: absolute;
-	top: 265px;
-	left: 3%;
-	font-size: 20px;
+    position: absolute;
+    top: 265px;
+    left: 3%;
+    width: calc(100% - 400px);
+    font-size: 20px;
 }
 
 .stars_e {
-	height:40px;
-	width:175px;
-	position:absolute;
-	top:21%;
-	left:295px;
+    height:40px;
+    width:175px;
+    position:absolute;
+    top:21%;
+    left:295px;
 }
 
 .warning {
-	position: absolute;
-	top: 285px;
-	left: 3%;
-	width: 30%;
-	font-size: 20px;
+    position: absolute;
+    top: 285px;
+    left: 3%;
+    width: 30%;
+    font-size: 20px;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 .ordered {
-	right:2%;
-	top:100px;
-	position: absolute;
-	font-style: italic;
-	font-size: 22px;
+    right:2%;
+    top:30px;
+    position: absolute;
+    font-style: italic;
+    font-size: 22px;
 }
 
 
 .order_window {
-	position: absolute;
-	border:1px solid #000;
-	height:300px;
-	width:40%;
-	background-color: Ivory;
-	overflow: scroll;
+    position: relative;
+    height:300px;
+    width:300px;
+    margin: 10px;
+    border: 2pt black solid;
+    overflow: scroll;
 }
 
 .order_window h5{
-	position: absolute;
-	margin-top: 0;
-	top: 5px;
-	left: 45%;
-	font-size: 16px;
-}
-
-#order_one {
-	top: 15px;
-	left: 5%;
-}
-
-#order_two {
-	top: 15px;
-	right: 5%;
-}
-
-#order_three {
-	top: 330px;
-	left: 5%;
-}
-
-#order_four {
-	top: 330px;
-	right: 5%;
+    position: absolute;
+    margin-top: 0;
+    top: 5px;
+    left: 45%;
+    font-size: 16px;
 }
 
 .new_order_button {
-	position: absolute;
-	font-size:18px;
-	height:75px;
-	width: 75px;
-	font-size:60px;
-}
-
-
-#new_order_two {
-	top:90px;
-	right: 20%;
-}
-
-#new_order_three {
-	top:385px;
-	left: 20%;
-}
-#new_order_four {
-	top:385px;
-	right: 20%;
+    position: absolute;
+    height:75px;
+    width: 75px;
+    left: calc(50% - 37px);
+    top: calc(50% - 37px);
+    font-size:60px;
 }
 
 #submit_order {
-	position:absolute;
-	height:10%;
-	width:30%;
-	font-size:22px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	right:0;
+    position:absolute;
+    font-size:20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    bottom: 0px;
+    width: 150px;
+    left: calc(50% - 60px);
 }
 
 .confirm_window {
-	background-color: Linen;
-	border:1px solid #000;
-	position:fixed;
-	height:175px;
-	width:80%;
-	left:10%;
-	top:25%;
+    background-color: Linen;
+    position:fixed;
+    height:175px;
+    width:80%;
+    left:10%;
+    top:25%;
+    box-shadow: 10px 10px 3px #888888;
 }
 
 .confirm_button {
-	height:50px;
-	width: 35%;
-	font-size:22px;
+    height:50px;
+    width: 35%;
+    font-size:22px;
 }
 
 #order_c_no {
-	position: absolute;
-	left: 10%;
-	top: 110px;
+    position: absolute;
+    left: 10%;
+    top: 110px;
 }
 
 #order_c_yes {
-	position: absolute;
-	right: 10%;
-	top: 110px;
+    position: absolute;
+    right: 10%;
+    top: 110px;
 }
 
 #warning_ret {
-	position: absolute;
-	right: 35%;
-	top: 110px;
+    position: absolute;
+    right: 35%;
+    top: 110px;
 }
 
 #order_warning p {
-	position: absolute;
-	right:43%;
-	margin-top:0px;
-	top:30px;
-	font-size:28px;
+    position: absolute;
+    left: 23%;
+    right: 23%;
+    margin-top:0px;
+    top:30px;
+    font-size:28px;
 }
 
 #not_imp_ret {
-	position: absolute;
-	right: 35%;
-	top: 110px;
+    position: absolute;
+    right: 35%;
+    top: 110px;
 }
 
 #not_implemented p {
-	position: absolute;
-	left:30%;
-	margin-top:0px;
-	top:30px;
-	font-size:28px;
+    position: absolute;
+    left:30%;
+    margin-top:0px;
+    top:30px;
+    font-size:28px;
 }
 
 #order_confirm p {
-	position: absolute;
-	left:41%;
-	margin-top:0px;
-	top:30px;
-	font-size:28px;
+    position: absolute;
+    left:20%;
+    right: 20%;
+    margin-top:0px;
+    top:30px;
+    font-size:28px;
 }
 
 #submitted_p {
-	text-align: center;
-	position:absolute;
-	left:38%;
-	margin-top:0px;
-	top:35%;
-	font-size:30px;
-	margin-left: auto;
+    text-align: center;
+    position:absolute;
+    left:38%;
+    margin-top:0px;
+    top:35%;
+    font-size:30px;
+    margin-left: auto;
     margin-right: auto;
 }
 
 #wait_order_p{
-	text-align: center;
-	position:absolute;
-	left:40%;
-	margin-top:0px;
-	top:40%;
-	font-size:30px;
-	margin-left: auto;
+    text-align: center;
+    position:absolute;
+    left:40%;
+    margin-top:0px;
+    top:40%;
+    font-size:30px;
+    margin-left: auto;
     margin-right: auto;
-	
+
 }
 
 #fried_calamari{
-	top:50px;
+    top:50px;
 }
 
 #crisper{
-	top:60px;
+    top:60px;
 }
 
 #bacon_shrimp{
-	top:70px;
+    top:70px;
 }
 
 #invis_drink{
-	top:50px;
+    top:50px;
 }
 
 #wine{
-	top:60px;
+    top:60px;
 }
 
 #steak{
-	top:50px;
+    top:50px;
 }
 
 #fish_chips{
-	top:60px;
+    top:60px;
 }
 
 #lemon_pie{
-	top:50px;
+    top:50px;
 }
 
 #shortcake{
-	top:60px;
+    top:60px;
 }
 
 /* Order screen items */
@@ -587,52 +535,44 @@ h2 {
 .order_list{
     position: relative;
     top: 20px;
+    overflow-x: hidden;
 }
 
 .order_item{
     margin-top: 15px;
     padding-left: 15px;
     font: 12px;
-	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
-    text-align: left;
+    
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+}
+
+.item_price{
+    float: right;
 }
 
 .delete_order_item{
     height: 16px;
     width: 30px;
-    display: block;
     float: right;
-    margin-right: 20px;
-    margin-left: 30px;
+    margin-right: 15px;
 }
 
-ul.order_list {
+.order_item span:first-child{
+    padding-right: 0.33em;
+    background-color: white;
+}
+
+.order_item span + span {
+    float: right;
+    padding-left: 0.33em;
+    background-color: white;
+}
+
+.order_list {
     max-width: 40em;
     padding: 0;
     overflow-x: hidden;
     list-style: none
-}
-
-ul.order_list li:before 
-{
-    float: left;
-    width: 0;
-    white-space: nowrap;
-    content:
- ". . . . . . . . . . . . . . . . . . . . "
- ". . . . . . . . . . . . . . . . . . . . "
- ". . . . . . . . . . . . . . . . . . . . "
- ". . . . . . . . . . . . . . . . . . . . "
-}
-
-ul.order_list span:first-child {
-    padding-right: 0.33em;
-}
-
-ul.order_list span + span 
-{
-    float: right;
-    padding-left: 0.33em;
 }
 
 .bill{
@@ -655,7 +595,7 @@ h5{
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
-    height: calc(100% - 50px);
+    height: 100%;
     width: 100%;
 }
 
@@ -665,13 +605,13 @@ h5{
     width: 160px;
     left: 70px;
     bottom: 10px;
+    font-size: 20px;
 }
 
 #pay_bills{
     position:relative;
-    width: 200px;
-    height: 50px;
-    left: calc(50% - 100px);
+    left: calc(50% - 60px);
+    bottom: 40px;
     font-size: 20px;
 }
 
@@ -679,15 +619,20 @@ h5{
     padding-left: 15px;
 }
 
+.bill_item_price{
+    float: right;
+    margin-right: 30px;
+}
+
 
 /*Review screen items*/
 
 #rating_screen{
     position: relative;
-	overflow: scroll;
-	border: 1px solid #000;
-	width: 100%;
-	height: 100%;
+    overflow: scroll;
+    border: 1px solid #000;
+    width: 100%;
+    height: 100%;
 }
 
 #generic_item {
@@ -696,43 +641,42 @@ h5{
 
 .rating_item {
     position: relative;
-	left:4%;
-	border:1px solid #000;
-	height:150px;
-	width:92%;
+    left:4%;
+    border:1px solid #000;
+    height:150px;
+    width:92%;
 }
 
 .rating_image {
     position: absolute;
-	top: 12.5px;
-	left: 3%;
-	height:125px;
-	width:175px;
-	border:1px solid #000;
+    top: 12.5px;
+    left: 3%;
+    height:125px;
+    width:175px;
+    border:1px solid #000;
 }
 
 .rating_desc{
     position: absolute;	
-	top:30px;
-	left:230px;
-	text-align: left;
+    top:30px;
+    left:230px;
+    text-align: left;
 }
 
 #rating_screen_e{
     position: relative;
-	overflow: scroll;
-	border: 1px solid #000;
-	width: 100%;
-	height: 100%;
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
 }
 
 #back_rating{
     position: absolute;
-	top: 3%;
-	left: 3%;
-	height: 10%;
-	width: 30%;
-	font-size: 25px;
+    top: 3%;
+    left: 3%;
+    height: 10%;
+    width: 30%;
+    font-size: 25px;
 }
 
 #star_1{
@@ -786,32 +730,15 @@ h5{
 
 #send_rating{
     position:absolute;
-	height:10%;
-	width:40%;
-	font-size:22px;
-	top:130%;
+    height:10%;
+    width:40%;
+    font-size:22px;
+    top:130%;
     left:25%;
     margin:5%;
 }
 
 /* Modal */
-
-.modal{
-    position: fixed;
-    height: 300px;
-    width: 400px;
-    left: calc(50% - 200px);
-    top: calc(50% - 150px);
-    background-color: white;
-    border: 2pt black solid;
-}
-
-.modal_close{
-    display: block;
-    height: 30px;
-    width: 30px;
-    margin: 10px;
-}
 
 .modal_ok{
     position: absolute;
@@ -819,6 +746,7 @@ h5{
     width: 100px;
     right: 20px;
     bottom: 10px;
+    font-size: 22px;
 }
 
 .modal_cancel{
@@ -827,17 +755,25 @@ h5{
     width: 100px;
     right: 140px;
     bottom: 10px;
+    font-size: 22px;
 }
 
-.modal_background{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-}
 .modal_text{
     position: absolute;
-    width: 300px;
-    top: 80px;
-    left: 50px;
+    margin: 20%;
+}
+
+hr{
+    position: absolute;
+    bottom: -15px;
+    left: 10%;
+    width: 80%;
+}
+
+.whitespace_pad{
+    display:block;
+    width: 100%;
+    height: 40px;
+    bottom: 0px;
+    background-color: white;
 }
